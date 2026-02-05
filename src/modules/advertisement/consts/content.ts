@@ -1,4 +1,4 @@
-import { vectorDesktop, vectorMobile } from "../assets";
+import { vectorDesktop, vectorMobile } from "../../../assets/index";
 
 type Device = "mobile" | "desktop";
 

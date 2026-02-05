@@ -1,7 +1,10 @@
+import { content } from "./consts/content";
+import { useIsMobile } from "../../shared/hooks/useIsMobile";
+import { arrow } from "../../assets/index";
 import styled from "styled-components";
-import { media } from "../../../styles/media";
+import { media } from "../../styles/media";
 
-export const Wrapper = styled.div`
+export const Root = styled.div`
   min-height: 40px;
   background-color: #a98c64;
   display: flex;
@@ -73,3 +76,26 @@ export const Button = styled.button`
     font-size: 24px;
   }
 `;
+
+export const Advertisement = () => {
+  const isMobile = useIsMobile();
+
+  const visibleItem = content.find((item) =>
+    isMobile ? item.device === "mobile" : item.device === "desktop",
+  );
+
+  if (!visibleItem) return null;
+
+  return (
+    <Root>
+      <Content>
+        <img src={visibleItem.img} alt="" />
+        <Description>{visibleItem.text}</Description>
+      </Content>
+      <Button>
+        Заказать
+        <img src={arrow} alt="" />
+      </Button>
+    </Root>
+  );
+};

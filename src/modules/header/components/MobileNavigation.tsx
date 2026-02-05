@@ -1,8 +1,8 @@
 import { useState } from "react";
-import Burger from "../Burger/Burger";
-import { burgerIcon } from "../../assets";
+import { Burger } from "./Burger";
+import { burgerIcon } from "../../../assets/index";
 
-const MobileNavigation = () => {
+export const MobileNavigation = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   const handleClick = () => {
@@ -18,5 +18,3 @@ const MobileNavigation = () => {
     </>
   );
 };
-
-export default MobileNavigation;
