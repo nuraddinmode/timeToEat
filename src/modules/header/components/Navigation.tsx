@@ -1,13 +1,13 @@
-import items from "../consts/items";
+import { items } from "../consts";
 import styled from "styled-components";
 
-export const Root = styled.ul`
+const Root = styled.ul`
   display: flex;
   align-items: center;
   gap: 30px;
 `;
 
-export const Item = styled.li`
+const Item = styled.li`
   color: #493e3e;
   font-feature-settings: off;
   font-family: "TT Norms Pro";
@@ -17,7 +17,7 @@ export const Item = styled.li`
   line-height: normal;
 `;
 
-export const Navigation = () => {
+const Navigation = () => {
   return (
     <Root>
       {items.map(({ id, label }) => (
@@ -28,3 +28,5 @@ export const Navigation = () => {
     </Root>
   );
 };
+
+export { Navigation };

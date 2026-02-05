@@ -9,7 +9,7 @@ interface AdvertisementItem {
   device: Device;
 }
 
-export const content: AdvertisementItem[] = [
+const content: AdvertisementItem[] = [
   {
     id: 0,
     text: "Скидка 10% при заказе от 2х недель",
@@ -23,3 +23,5 @@ export const content: AdvertisementItem[] = [
     device: "desktop",
   },
 ];
+
+export { content };

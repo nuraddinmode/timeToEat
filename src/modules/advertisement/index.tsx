@@ -1,39 +1,39 @@
-import { content } from "./consts/content";
+import { content } from "./consts";
 import { useIsMobile } from "../../shared/hooks/useIsMobile";
 import { arrow } from "../../assets/index";
 import styled from "styled-components";
-import { media } from "../../styles/media";
+import { Device } from "@shared/styles/media";
 
-export const Root = styled.div`
+const Root = styled.div`
   min-height: 40px;
   background-color: #a98c64;
   display: flex;
   align-items: center;
   justify-content: space-around;
 
-  ${media.tablet} {
+  @media ${Device.Tablet} {
     min-height: 50px;
   }
-  ${media.desktop} {
+  @media ${Device.Laptop} {
     min-height: 60px;
   }
 `;
 
-export const Content = styled.div`
+const Content = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 10px;
 
-  ${media.tablet} {
+  @media ${Device.Tablet} {
     gap: 15px;
   }
-  ${media.desktop} {
+  @media ${Device.Laptop} {
     gap: 20px;
   }
 `;
 
-export const Description = styled.p`
+const Description = styled.p`
   color: #fff;
   font-variant-ligatures: none;
   font-family: "TT Norms Pro";
@@ -42,18 +42,18 @@ export const Description = styled.p`
   font-weight: 700;
   line-height: normal;
 
-  ${media.tablet} {
+  @media ${Device.Tablet} {
     font-size: 15px;
   }
-  ${media.desktop} {
+  @media ${Device.Laptop} {
     font-size: 24px;
   }
 `;
 
-export const Button = styled.button`
+const Button = styled.button`
   display: none;
 
-  ${media.tablet} {
+  @media ${Device.Tablet} {
     display: flex;
     gap: 7px;
     align-items: center;
@@ -71,13 +71,13 @@ export const Button = styled.button`
     line-height: normal;
   }
 
-  ${media.desktop} {
+  @media ${Device.Laptop} {
     gap: 10px;
     font-size: 24px;
   }
 `;
 
-export const Advertisement = () => {
+const Advertisement = () => {
   const isMobile = useIsMobile();
 
   const visibleItem = content.find((item) =>
@@ -99,3 +99,5 @@ export const Advertisement = () => {
     </Root>
   );
 };
+
+export { Advertisement };

@@ -1,5 +1,5 @@
-import { useIsMobile } from "../../../shared/hooks/useIsMobile";
-import content from "../consts/content";
+import { useIsMobile } from "../../shared/hooks/useIsMobile";
+import { content } from "./consts";
 
 const Hero = () => {
   const isMobile = useIsMobile();
@@ -24,4 +24,4 @@ const Hero = () => {
   );
 };
 
-export default Hero;
+export { Hero };

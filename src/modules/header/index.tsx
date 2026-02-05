@@ -5,13 +5,13 @@ import { logoDesktop, logoMobile } from "../../assets/index";
 import { Contacts } from "./components/Contacts";
 import styled from "styled-components";
 
-export const Root = styled.div`
+const Root = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
 `;
 
-export const Header = () => {
+const Header = () => {
   const isMobile = useIsMobile();
 
   return (
@@ -23,3 +23,5 @@ export const Header = () => {
     </Root>
   );
 };
+
+export { Header };

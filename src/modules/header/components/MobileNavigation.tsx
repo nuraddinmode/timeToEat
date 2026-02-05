@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Burger } from "./Burger";
 import { burgerIcon } from "../../../assets/index";
 
-export const MobileNavigation = () => {
+const MobileNavigation = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   const handleClick = () => {
