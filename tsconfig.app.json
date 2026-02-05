@@ -1,11 +1,22 @@
 {
   "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@assets/*": ["src/assets/*"],
+      "@common/*": ["src/common/*"],
+      "@fonts/*": ["src/fonts/*"],
+      "@modules/*": ["src/modules/*"],
+      "@query-client": ["src/query-client"],
+      "@routes/*": ["src/routes/*"],
+      "@page-templates/*": ["src/page-templates/*"],
+      "@pages/*": ["src/pages/*"]
+    },
     "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.app.tsbuildinfo",
     "target": "ES2022",
     "useDefineForClassFields": true,
     "lib": ["ES2022", "DOM", "DOM.Iterable"],
     "module": "ESNext",
-    "types": ["vite/client"],
+    "types": ["vite/client", "@svgx/vite-plugin-react"],
     "skipLibCheck": true,
 
     /* Bundler mode */

@@ -1,14 +1,15 @@
-import { media } from "./../../styles/media";
+import { Device } from "src/shared/styles/media";
 import styled from "styled-components";
 
 export const Container = styled.div`
   background-color: #faf6f2;
   padding: 20px;
 
-  ${media.tablet} {
+  @media ${Device.Laptop} {
     gap: 40px;
   }
-  ${media.desktop} {
+
+  @media ${Device.Laptop} {
     padding: 60px;
   }
 `;

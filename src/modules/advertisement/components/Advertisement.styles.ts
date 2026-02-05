@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { media } from "../../../styles/media";
+import { media } from "../../../shared/styles/media";
 
 export const Wrapper = styled.div`
   min-height: 40px;

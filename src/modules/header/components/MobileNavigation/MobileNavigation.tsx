@@ -19,4 +19,4 @@ const MobileNavigation = () => {
   );
 };
 
-export default MobileNavigation;
+export { MobileNavigation };

@@ -1,7 +1,7 @@
 import { content } from "../consts/content";
-import { useIsMobile } from "../../../shared/hooks/useIsMobile";
 import { Wrapper, Content, Description, Button } from "./Advertisement.styles";
 import { arrow } from "../assets";
+import { useIsMobile } from "src/shared/hooks/useIsMobile";
 
 const Advertisement = () => {
   const isMobile = useIsMobile();
