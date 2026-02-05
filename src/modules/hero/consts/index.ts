@@ -19,4 +19,4 @@ const content: ContentItem[] = [
   },
 ];
 
-export default content;
+export { content };

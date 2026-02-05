@@ -1,6 +1,6 @@
-import items from "../consts/items";
+import { items } from "../consts";
 
-export const Burger = () => {
+const Burger = () => {
   return (
     <ul>
       {items.map((item) => (
@@ -9,3 +9,5 @@ export const Burger = () => {
     </ul>
   );
 };
+
+export { Burger };

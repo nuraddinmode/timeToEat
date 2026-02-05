@@ -13,4 +13,4 @@ const items: NavItem[] = [
   { id: 6, label: "Отзывы" },
 ];
 
-export default items;
+export { items };
