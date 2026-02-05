@@ -3,7 +3,7 @@
     "baseUrl": ".",
     "paths": {
       "@assets/*": ["src/assets/*"],
-      "@common/*": ["src/common/*"],
+      "@shared/*": ["src/shared/*"],
       "@fonts/*": ["src/fonts/*"],
       "@modules/*": ["src/modules/*"],
       "@query-client": ["src/query-client"],
