@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const Wrapper = styled.div`
+export const Root = styled.div`
   display: flex;
   flex-direction: column;
   align-items: end;
@@ -40,3 +40,13 @@ export const Time = styled.p`
   font-weight: 500;
   line-height: normal;
 `;
+
+export const Contacts = () => {
+  return (
+    <Root>
+      <Anchor href="">Перезвоните мне</Anchor>
+      <Number>+7 988 500-1-700</Number>
+      <Time>c 09:00 до 21:00</Time>
+    </Root>
+  );
+};
