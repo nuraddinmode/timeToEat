@@ -10,6 +10,7 @@ const Root = styled.div`
 
   @media ${Device.Laptop} {
     margin-bottom: 70px;
+    gap: 70px;
   }
 `;
 
