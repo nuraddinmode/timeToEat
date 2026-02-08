@@ -1,6 +1,6 @@
 import { content } from "./consts";
-import { useIsMobile } from "../../shared/hooks/useIsMobile";
-import { arrow } from "../../assets/index";
+import { useIsMobile } from "@shared/hooks/useIsMobile";
+import Arrow from "@assets/img/arrowRight.svg";
 import styled from "styled-components";
 import { Device } from "@shared/styles/media";
 
@@ -94,7 +94,7 @@ const Advertisement = () => {
       </Content>
       <Button>
         Заказать
-        <img src={arrow} alt="" />
+        <Arrow />
       </Button>
     </Root>
   );
