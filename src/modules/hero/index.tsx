@@ -7,6 +7,7 @@ const Root = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-bottom: 130px;
 
   @media ${Device.Laptop} {
     flex-direction: row;
