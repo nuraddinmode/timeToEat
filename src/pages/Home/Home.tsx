@@ -3,6 +3,7 @@ import { Advertisement } from "@modules/Advertisement";
 import { Header } from "@modules/Header";
 import { Device } from "@shared/styles/media";
 import styled from "styled-components";
+import { Offers } from "@modules/Offers";
 
 const Container = styled.div`
   background-color: #faf6f2;
@@ -23,6 +24,7 @@ const Home = () => {
       <Container>
         <Header />
         <Hero />
+        <Offers />
       </Container>
     </>
   );
