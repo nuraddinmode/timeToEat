@@ -1,26 +1,185 @@
-import { useIsMobile } from "../../shared/hooks/useIsMobile";
-import { content } from "./consts";
+import { useIsMobile } from "@shared/hooks/useIsMobile";
+import styled from "styled-components";
+import { dish } from "@assets/index";
+import { Device } from "@shared/styles/media";
+
+const Root = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  @media ${Device.Laptop} {
+    flex-direction: row;
+  }
+`;
+
+const Content = styled.div`
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+`;
+
+const Title = styled.h1`
+  grid-column: span 4;
+  color: #000;
+  font-family: "TT Norms Pro";
+  font-weight: 700;
+  line-height: normal;
+  font-size: 28px;
+
+  @media ${Device.Laptop} {
+    font-size: 60px;
+    margin-bottom: 88px;
+  }
+`;
+
+const Description = styled.p`
+  grid-column: span 3;
+  color: #493e3e;
+  font-family: "TT Norms Pro";
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+
+  margin-bottom: 50px;
+`;
+
+const HeroMedia = styled.div`
+  position: relative;
+  width: 100%;
+  max-width: 290px;
+
+  @media ${Device.Laptop} {
+    max-width: 600px;
+  }
+`;
+
+const DishImage = styled.img`
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  display: block;
+`;
+
+const CircleBig = styled.div`
+  position: absolute;
+  width: 144px;
+  height: 144px;
+  border-radius: 50%;
+  background-color: #e2ddc0;
+  pointer-events: none;
+
+  top: 90px;
+  left: -30px;
+  z-index: 1;
+
+  @media ${Device.Laptop} {
+    width: 274px;
+    height: 274px;
+
+    top: 240px;
+    left: -30px;
+  }
+`;
+
+const CircleSmall = styled.div`
+  position: absolute;
+  width: 62px;
+  height: 62px;
+  border-radius: 50%;
+  background-color: #6d9988;
+  pointer-events: none;
+
+  top: 20px;
+  right: 10px;
+  z-index: 1;
+
+  @media ${Device.Laptop} {
+    width: 117px;
+    height: 117px;
+
+    top: 60px;
+    right: 10px;
+  }
+`;
+
+const ColoredBtn = styled.button`
+  padding: 9px 26px;
+  border-radius: 40px;
+  background-color: #4d8f76;
+
+  color: #fff;
+  font-family: "TT Norms Pro";
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 30px;
+  flex-shrink: 0;
+
+  @media ${Device.Tablet} {
+    font-size: 16px;
+  }
+`;
+
+const Buttons = styled.div`
+  display: flex;
+  gap: 36px;
+
+  @media ${Device.Laptop} {
+    font-size: 20px;
+  }
+`;
+
+const SecondBtn = styled.button`
+  color: #4d8f76;
+  text-align: center;
+  font-family: "TT Norms Pro";
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+
+  @media ${Device.Tablet} {
+    padding: 9px 26px;
+    border: 1px solid;
+    border-radius: 40px;
+    line-height: 30px;
+    font-size: 16px;
+  }
+`;
 
 const Hero = () => {
   const isMobile = useIsMobile();
 
-  const visibleItem = content.find((item) =>
-    isMobile ? item.device === "mobile" : item.device === "desktop",
-  );
-
-  if (!visibleItem) return null;
   return (
-    <div>
+    <Root>
       <div>
-        <h1>{visibleItem.text}</h1>
-        <div>
-          <button>Подобрать питание</button>
-          <button>Получить консультацию</button>
-        </div>
+        {isMobile ? (
+          <Content>
+            <Title>Прогрессивное питание на каждый день</Title>
+            <Description>
+              Сбалансированный рацион в современном формате — Супер-боул
+            </Description>
+          </Content>
+        ) : (
+          <>
+            <Title>Доставка прогрессивного питания для гурманов</Title>
+          </>
+        )}
+
+        <Buttons>
+          <ColoredBtn>Подобрать питание</ColoredBtn>
+          <SecondBtn>Получить консультацию</SecondBtn>
+        </Buttons>
       </div>
 
-      <img src="" alt="" />
-    </div>
+      <HeroMedia>
+        <CircleBig></CircleBig>
+        <CircleSmall></CircleSmall>
+        <DishImage src={dish} alt="Блюдо" />
+      </HeroMedia>
+    </Root>
   );
 };
 

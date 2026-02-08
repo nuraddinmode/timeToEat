@@ -1,5 +1,6 @@
-import { Advertisement } from "../../modules/Advertisement";
-import { Header } from "../../modules/Header";
+import { Hero } from "@modules/Hero";
+import { Advertisement } from "@modules/Advertisement";
+import { Header } from "@modules/Header";
 import { Device } from "@shared/styles/media";
 import styled from "styled-components";
 
@@ -21,6 +22,7 @@ const Home = () => {
       <Advertisement />
       <Container>
         <Header />
+        <Hero />
       </Container>
     </>
   );

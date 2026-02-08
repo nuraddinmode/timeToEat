@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Burger } from "./Burger";
-import { burgerIcon } from "../../../assets/index";
+import BurgerIcon from "@assets/img/burgerIcon.svg";
 
 const MobileNavigation = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -12,7 +12,7 @@ const MobileNavigation = () => {
   return (
     <>
       <button onClick={handleClick}>
-        <img src={burgerIcon} alt="" />
+        <BurgerIcon />
       </button>
       {isOpen && <Burger />}
     </>
