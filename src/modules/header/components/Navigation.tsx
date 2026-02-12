@@ -1,3 +1,4 @@
+import { Colors } from "@shared/styles/Colors";
 import { items } from "../consts";
 import styled from "styled-components";
 
@@ -8,8 +9,7 @@ const Root = styled.ul`
 `;
 
 const Item = styled.li`
-  color: #493e3e;
-  font-feature-settings: off;
+  color: ${Colors.secondary};
   font-family: "TT Norms Pro";
   font-size: 18px;
   font-style: normal;

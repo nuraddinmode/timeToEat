@@ -2,6 +2,7 @@ import { useIsMobile } from "@shared/hooks/useIsMobile";
 import styled from "styled-components";
 import { dish } from "@assets/index";
 import { Device } from "@shared/styles/media";
+import { Colors } from "@shared/styles/Colors";
 
 const Root = styled.div`
   display: flex;
@@ -22,7 +23,7 @@ const Content = styled.div`
 
 const Title = styled.h1`
   grid-column: span 4;
-  color: #000;
+  color: ${Colors.black};
   font-family: "TT Norms Pro";
   font-weight: 700;
   line-height: normal;
@@ -36,7 +37,7 @@ const Title = styled.h1`
 
 const Description = styled.p`
   grid-column: span 3;
-  color: #493e3e;
+  color: ${Colors.secondary};
   font-family: "TT Norms Pro";
   font-size: 14px;
   font-style: normal;
@@ -68,7 +69,7 @@ const CircleBig = styled.div`
   width: 144px;
   height: 144px;
   border-radius: 50%;
-  background-color: #e2ddc0;
+  background-color: ${Colors.circleBig};
   pointer-events: none;
 
   top: 90px;
@@ -80,7 +81,6 @@ const CircleBig = styled.div`
     height: 274px;
 
     top: 240px;
-    left: -30px;
   }
 `;
 
@@ -89,7 +89,7 @@ const CircleSmall = styled.div`
   width: 62px;
   height: 62px;
   border-radius: 50%;
-  background-color: #6d9988;
+  background-color: ${Colors.circleSmall};
   pointer-events: none;
 
   top: 20px;
@@ -101,16 +101,15 @@ const CircleSmall = styled.div`
     height: 117px;
 
     top: 60px;
-    right: 10px;
   }
 `;
 
 const ColoredBtn = styled.button`
   padding: 9px 26px;
   border-radius: 40px;
-  background-color: #4d8f76;
+  background-color: ${Colors.primary};
 
-  color: #fff;
+  color: ${Colors.white};
   font-family: "TT Norms Pro";
   font-size: 14px;
   font-style: normal;
@@ -133,7 +132,7 @@ const Buttons = styled.div`
 `;
 
 const SecondBtn = styled.button`
-  color: #4d8f76;
+  color: ${Colors.primary};
   text-align: center;
   font-family: "TT Norms Pro";
   font-size: 14px;

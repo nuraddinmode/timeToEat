@@ -1,7 +1,8 @@
 import styled from "styled-components";
-import Like from "@assets/img/hands.svg";
-import Frame from "@assets/img/Frame.svg";
+import Like from "@assets/icons/hands.svg?component";
+import Frame from "@assets/icons/frame.svg?component";
 import { Device } from "@shared/styles/media";
+import { Colors } from "@shared/styles/Colors";
 
 const Root = styled.div`
   display: flex;
@@ -14,14 +15,14 @@ const Root = styled.div`
   }
 `;
 
-const Card = styled.div<{ $reverse?: boolean }>`
+const Card = styled.div<{ $isReverse?: boolean }>`
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 20px;
 
   @media ${Device.Laptop} {
-    flex-direction: ${({ $reverse }) => ($reverse ? "row-reverse" : "row")};
+    flex-direction: ${({ $isReverse }) => ($isReverse ? "row-reverse" : "row")};
     align-items: center;
     justify-content: space-between;
     gap: 80px;
@@ -29,7 +30,7 @@ const Card = styled.div<{ $reverse?: boolean }>`
 `;
 
 const Subtitle = styled.h2`
-  color: #000;
+  color: ${Colors.black};
   text-align: center;
   font-family: "TT Norms Pro";
   font-size: 24px;
@@ -60,7 +61,7 @@ const Descriptions = styled.div`
 `;
 
 const Description = styled.p`
-  color: #493e3e;
+  color: ${Colors.secondary};
   font-family: "TT Norms Pro";
   font-size: 14px;
   font-style: normal;
@@ -75,7 +76,7 @@ const Description = styled.p`
 const Offers = () => {
   return (
     <Root>
-      <Card>
+      <Card $isReverse={false}>
         <Like />
 
         <Texts>
@@ -94,7 +95,7 @@ const Offers = () => {
         </Texts>
       </Card>
 
-      <Card $reverse>
+      <Card $isReverse={true}>
         <Frame />
 
         <Texts>

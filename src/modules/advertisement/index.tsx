@@ -1,12 +1,13 @@
 import { content } from "./consts";
 import { useIsMobile } from "@shared/hooks/useIsMobile";
-import Arrow from "@assets/img/arrowRight.svg";
+import Arrow from "@assets/icons/arrowRight.svg?component";
 import styled from "styled-components";
 import { Device } from "@shared/styles/media";
+import { Colors } from "@shared/styles/Colors";
 
 const Root = styled.div`
   min-height: 40px;
-  background-color: #a98c64;
+  background-color: ${Colors.advertisement};
   display: flex;
   align-items: center;
   justify-content: space-around;
@@ -34,7 +35,7 @@ const Content = styled.div`
 `;
 
 const Description = styled.p`
-  color: #fff;
+  color: ${Colors.white};
   font-variant-ligatures: none;
   font-family: "TT Norms Pro";
   font-size: 14px;
@@ -62,7 +63,7 @@ const Button = styled.button`
     border: none;
     padding: 0;
     cursor: pointer;
-    color: #fff;
+    color: ${Colors.white};
     font-variant-ligatures: none;
     font-family: "TT Norms Pro";
     font-size: 15px;
@@ -89,7 +90,7 @@ const Advertisement = () => {
   return (
     <Root>
       <Content>
-        <img src={visibleItem.img} alt="" />
+        {<visibleItem.img />}
         <Description>{visibleItem.text}</Description>
       </Content>
       <Button>

@@ -4,9 +4,10 @@ import { Header } from "@modules/Header";
 import { Device } from "@shared/styles/media";
 import styled from "styled-components";
 import { Offers } from "@modules/Offers";
+import { Colors } from "@shared/styles/Colors";
 
 const Container = styled.div`
-  background-color: #faf6f2;
+  background-color: ${Colors.background};
   padding: 20px;
 
   @media ${Device.Tablet} {
