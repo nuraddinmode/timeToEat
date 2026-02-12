@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Burger } from "./Burger";
-import BurgerIcon from "@assets/img/burgerIcon.svg";
+import BurgerIcon from "@assets/icons/burgerIcon.svg?component";
 
 const MobileNavigation = () => {
   const [isOpen, setIsOpen] = useState(false);

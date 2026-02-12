@@ -1,3 +1,4 @@
+import { Colors } from "@shared/styles/Colors";
 import styled from "styled-components";
 
 const Root = styled.div`
@@ -7,7 +8,7 @@ const Root = styled.div`
 `;
 
 const Anchor = styled.a`
-  color: var(--action, #4d8f76);
+  color: #4d8f76;
   font-family: "TT Norms Pro";
   font-size: 14px;
   font-style: normal;
@@ -18,11 +19,10 @@ const Anchor = styled.a`
   text-decoration-skip-ink: none;
   text-decoration-thickness: auto;
   text-underline-offset: auto;
-  text-underline-position: from-font;
 `;
 
 const Number = styled.h3`
-  color: var(--brown, #493e3e);
+  color: ${Colors.secondary};
   text-align: right;
   font-family: "TT Norms Pro";
   font-size: 24px;
@@ -32,7 +32,7 @@ const Number = styled.h3`
 `;
 
 const Time = styled.p`
-  color: var(--brown2, #756d6d);
+  color: ${Colors.additionalText};
   text-align: right;
   font-family: "TT Norms Pro";
   font-size: 12px;

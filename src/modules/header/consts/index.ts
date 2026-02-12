@@ -1,7 +1,7 @@
-interface NavItem {
+type NavItem = {
   label: string;
   id: number;
-}
+};
 
 const items: NavItem[] = [
   { id: 0, label: "Подбор рациона" },

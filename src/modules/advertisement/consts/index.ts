@@ -1,13 +1,14 @@
-import { vectorDesktop, vectorMobile } from "@assets/index";
+import vectorDesktop from "@assets/icons/vectorLaptop.svg?component";
+import vectorMobile from "@assets/icons/vectorMobile.svg?component";
+import type { Device } from "../types";
+// import type { ReactSVGElement } from "react";
 
-type Device = "mobile" | "desktop";
-
-interface AdvertisementItem {
+type AdvertisementItem = {
   id: number;
   text: string;
-  img: string;
+  img: any;
   device: Device;
-}
+};
 
 const content: AdvertisementItem[] = [
   {
