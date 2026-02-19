@@ -8,6 +8,7 @@ const Root = styled.div`
   display: flex;
   flex-direction: column;
   gap: 50px;
+  margin-bottom: 50px;
 
   @media ${Device.Laptop} {
     margin-bottom: 70px;

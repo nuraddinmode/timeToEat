@@ -32,12 +32,44 @@ svg {
   max-width: 100%;
 }
 
-input,
 button,
-textarea,
-select {
+textarea {
   font: inherit;
   color: inherit;
+}
+
+select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+
+  background: none;
+  border: none;
+  outline: none;
+  box-shadow: none;
+
+  padding: 0;
+  margin: 0;
+
+  font: inherit;
+  color: inherit;
+
+  box-sizing: border-box;
+}
+
+input {
+  background: none;
+  border: none;
+  outline: none;
+  box-shadow: none;
+
+  font: inherit;
+  color: inherit;
+
+  padding: 0;
+  margin: 0;
+
+  box-sizing: border-box;
 }
 
 button {

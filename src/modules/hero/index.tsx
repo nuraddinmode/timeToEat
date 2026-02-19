@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { dish } from "@assets/index";
 import { Device } from "@shared/styles/media";
 import { Colors } from "@shared/styles/Colors";
+import { Button } from "@shared/components/Button";
 
 const Root = styled.div`
   display: flex;
@@ -104,24 +105,6 @@ const CircleSmall = styled.div`
   }
 `;
 
-const ColoredBtn = styled.button`
-  padding: 9px 26px;
-  border-radius: 40px;
-  background-color: ${Colors.primary};
-
-  color: ${Colors.white};
-  font-family: "TT Norms Pro";
-  font-size: 14px;
-  font-style: normal;
-  font-weight: 700;
-  line-height: 30px;
-  flex-shrink: 0;
-
-  @media ${Device.Tablet} {
-    font-size: 16px;
-  }
-`;
-
 const Buttons = styled.div`
   display: flex;
   gap: 36px;
@@ -169,7 +152,7 @@ const Hero = () => {
         )}
 
         <Buttons>
-          <ColoredBtn>Подобрать питание</ColoredBtn>
+          <Button>Подобрать питание</Button>
           <SecondBtn>Получить консультацию</SecondBtn>
         </Buttons>
       </div>

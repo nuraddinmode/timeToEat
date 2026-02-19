@@ -5,6 +5,12 @@ import { Device } from "@shared/styles/media";
 import styled from "styled-components";
 import { Offers } from "@modules/Offers";
 import { Colors } from "@shared/styles/Colors";
+import { DietNutrition } from "@modules/Diet";
+import { Premium } from "@modules/Premium/";
+import PremiumFooter from "@modules/PremiumFooter";
+import { AboutService } from "@modules/AboutService";
+import { Information } from "@modules/Information";
+import { Delivery } from "@modules/Delivery";
 
 const Container = styled.div`
   background-color: ${Colors.background};
@@ -26,6 +32,12 @@ const Home = () => {
         <Header />
         <Hero />
         <Offers />
+        <DietNutrition />
+        <Premium />
+        <PremiumFooter />
+        <AboutService />
+        <Information />
+        <Delivery />
       </Container>
     </>
   );
