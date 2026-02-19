@@ -40,6 +40,7 @@ const DescWrapper = styled.div`
 
   @media ${Device.Laptop} {
     margin-bottom: 30px;
+    align-items: start;
   }
 `;
 
@@ -161,7 +162,6 @@ const Delivery = () => {
           src="https://yandex.ru/map-widget/v1/?um=constructor%3Af16d0a0eaa7cd4d51a223fa5149a5953ecc6908407cb4ce2d23b82e239f4538e&amp;source=constructor"
           width={isMobile ? "345" : "982"}
           height={isMobile ? "300" : "580"}
-          frameborder="0"
         ></iframe>
         <ContentWrapper>
           <Buttons>
