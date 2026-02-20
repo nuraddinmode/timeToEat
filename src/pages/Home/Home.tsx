@@ -11,6 +11,7 @@ import PremiumFooter from "@modules/PremiumFooter";
 import { AboutService } from "@modules/AboutService";
 import { Information } from "@modules/Information";
 import { Delivery } from "@modules/Delivery";
+import { Questions } from "@modules/Questions";
 
 const Container = styled.div`
   background-color: ${Colors.background};
@@ -38,6 +39,7 @@ const Home = () => {
         <AboutService />
         <Information />
         <Delivery />
+        <Questions />
       </Container>
     </>
   );

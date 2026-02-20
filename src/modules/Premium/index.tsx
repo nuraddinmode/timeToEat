@@ -275,14 +275,14 @@ const Premium = () => {
       </DaysWrapper>
 
       <Meals>
-        {currentDishes.map((dish) => (
-          <Meal key={dish.id}>
-            <img width="270px" src={dish.img} alt="" />
+        {currentDishes.map(({ id, img, time, portion, name }) => (
+          <Meal key={id}>
+            <img width="270px" src={img} alt="" />
             <MealTime>
-              <MealTimeContent>{dish.time}</MealTimeContent>
-              <MealTimeContent>{dish.portion}</MealTimeContent>
+              <MealTimeContent>{time}</MealTimeContent>
+              <MealTimeContent>{portion}</MealTimeContent>
             </MealTime>
-            <MealDescription>{dish.name}</MealDescription>
+            <MealDescription>{name}</MealDescription>
           </Meal>
         ))}
       </Meals>

@@ -17,7 +17,7 @@ type MealTime = "Завтрак" | "Обед" | "Полдник" | "Ужин";
 
 type Dish = {
   id: number;
-  img: any;
+  img: string;
   time: MealTime;
   portion: string;
   name: string;

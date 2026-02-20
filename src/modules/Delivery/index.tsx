@@ -8,10 +8,12 @@ import styled from "styled-components";
 
 const Root = styled.div`
   background-color: ${Colors.mapColors};
+  margin-bottom: 30px;
 
   @media ${Device.Laptop} {
     border-radius: 30px;
     padding: 30px;
+    margin-bottom: 70px;
   }
 `;
 
