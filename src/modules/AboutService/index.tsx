@@ -4,6 +4,19 @@ import { cards } from "./consts";
 import { useIsMobile } from "@shared/hooks/useIsMobile";
 import { Colors } from "@shared/styles/Colors";
 
+const Root = styled.div`
+  padding-right: 20px;
+  padding-left: 20px;
+
+  @media ${Device.Tablet} {
+    gap: 40px;
+  }
+  @media ${Device.Laptop} {
+    padding-left: 60px;
+    padding-right: 60px;
+  }
+`;
+
 const Cards = styled.div`
   display: grid;
   grid-template-columns: 1fr;
@@ -93,7 +106,7 @@ const AboutService = () => {
   const isMobile = useIsMobile();
 
   return (
-    <>
+    <Root>
       <Title>О нашем сервисе</Title>
       <Cards>
         {cards.map(({ Icon, laptop, mobile }) => (
@@ -104,7 +117,7 @@ const AboutService = () => {
           </Card>
         ))}
       </Cards>
-    </>
+    </Root>
   );
 };
 

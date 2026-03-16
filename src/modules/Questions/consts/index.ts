@@ -1,6 +1,6 @@
 import type { QuestionChapter } from "../types";
 
-export const questionChapters: QuestionChapter[] = [
+const questionChapters: QuestionChapter[] = [
   {
     id: 1,
     chapter: "Продукты",
@@ -126,3 +126,5 @@ export const questionChapters: QuestionChapter[] = [
     ],
   },
 ];
+
+export { questionChapters };

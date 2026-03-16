@@ -1,18 +1,32 @@
+import { Meals } from "./components/Meals";
+import { DaysOfWeek } from "./components/DaysOfWeek";
+import { MealPlanSelector } from "./components/MealPlanSelector";
+import { PremiumFooter } from "./components/PremiumFooter";
+import Plate from "@assets/icons/plate.svg?component";
+import { ButtonSelectContainer } from "@shared/components/ButtonSelectContainer";
+import { ButtonSelect } from "@shared/components/ButtonSelect";
 import { useIsMobile } from "@shared/hooks/useIsMobile";
 import { titleContent } from "./consts";
-import Plate from "@assets/icons/plate.svg?component";
-import { RadioBtn } from "./components/RadioBtn";
 import styled from "styled-components";
 import { Device } from "@shared/styles/media";
 import { Colors } from "@shared/styles/Colors";
-import { continuity, calories } from "./consts";
-import { useState } from "react";
-import { SmallRadio } from "@shared/components/SmallRadio";
-import { daysOfWeek } from "./consts";
-import type { WeekDay } from "./types/index";
+import { useMealPlanStore } from "./store";
 import { dishes } from "./consts";
+import { days } from "./consts";
 
 const Root = styled.div`
+  @media ${Device.Tablet} {
+    gap: 40px;
+  }
+  @media ${Device.Laptop} {
+    padding-right: 60px;
+    padding-left: 60px;
+  }
+`;
+
+const Wrapper = styled.div`
+  padding-right: 20px;
+  padding-left: 20px;
   @media ${Device.Laptop} {
     background-color: ${Colors.white};
     border-radius: 30px 30px 0 0;
@@ -73,35 +87,6 @@ const Subtitle = styled.h3`
   }
 `;
 
-const SectionNaming = styled.h3`
-  color: ${Colors.secondary};
-  text-align: center;
-  font-family: "TT Norms Pro";
-  font-size: 18px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: normal;
-  margin-bottom: 10px;
-
-  @media ${Device.Laptop} {
-    text-align: start;
-    font-size: 20px;
-  }
-`;
-
-const RadioWrapper = styled.div<{ $margin: number }>`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 30px;
-  margin-bottom: ${({ $margin }) => $margin ?? 0}px;
-  flex-wrap: wrap;
-
-  @media ${Device.Laptop} {
-    flex-wrap: nowrap;
-  }
-`;
-
 const ExtraHeading = styled.h2`
   color: ${Colors.black};
   font-family: "TT Norms Pro";
@@ -134,79 +119,45 @@ const ExtraDescription = styled.p`
   }
 `;
 
-const DaysWrapper = styled.div`
+const NumberOfDays = styled.div`
   display: flex;
-  gap: 30px;
-  overflow-x: auto;
-  margin-bottom: 30px;
-  &::-webkit-scrollbar {
-    display: none;
-  }
-`;
-
-const Meals = styled.div`
-  display: flex;
-  overflow-x: auto;
-  justify-content: space-between;
-  &::-webkit-scrollbar {
-    display: none;
-  }
-  margin-bottom: 20px;
-
-  @media ${Device.Laptop} {
-    margin-bottom: 0px;
-  }
-`;
-
-const Meal = styled.div`
-  display: flex;
-  min-width: 250px;
-  flex-direction: column;
   gap: 10px;
   align-items: center;
+  margin-bottom: 10px;
 
   @media ${Device.Laptop} {
-    align-items: start;
+    margin-bottom: 30px;
   }
 `;
 
-const MealTime = styled.div`
-  display: flex;
-  gap: 15px;
-  align-items: center;
-`;
-
-const MealTimeContent = styled.p`
-  color: ${Colors.advertisement};
-  font-family: "TT Norms Pro";
-  font-size: 12px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: normal;
-`;
-
-const MealDescription = styled.p`
-  max-width: 270px;
+const NumberOfDaysTitle = styled.h3`
+  max-width: 209px;
   color: ${Colors.secondary};
   font-family: "TT Norms Pro";
-  font-size: 16px;
+  font-size: 14px;
   font-style: normal;
   font-weight: 500;
   line-height: normal;
-  text-align: center;
-
-  @media ${Device.Laptop} {
-    text-align: start;
-  }
 `;
 
 const Premium = () => {
   const isMobile = useIsMobile();
 
-  const [selectedCalories, setSelectedCalories] = useState<number>(1);
-  const [selectedDuration, setSelectedDuration] = useState<number>(3);
+  const selectedCalories = useMealPlanStore((s) => s.selectedCalories);
+  const setSelectedCalories = useMealPlanStore((s) => s.setSelectedCalories);
 
-  const [selectedDay, setSelectedDay] = useState<WeekDay>("wednesday");
+  const selectedDuration = useMealPlanStore((s) => s.selectedDuration);
+  const setSelectedDuration = useMealPlanStore((s) => s.setSelectedDuration);
+
+  const selectedDay = useMealPlanStore((s) => s.selectedDay);
+  const setSelectedDay = useMealPlanStore((s) => s.setSelectedDay);
+
+  const selectedDayOfNutrition = useMealPlanStore(
+    (s) => s.selectedDayOfNutrition,
+  );
+  const setSelectedDayOfNutrition = useMealPlanStore(
+    (s) => s.setSelectedDayOfNutrition,
+  );
 
   const currentDishes = dishes[selectedDay];
 
@@ -218,74 +169,48 @@ const Premium = () => {
 
   return (
     <Root>
-      <HeadingWrapper>
-        <Title>{visibleItem.title}</Title>
-        <SubtitleWrapper>
-          <Plate />
-          <Subtitle>Каждый день новое меню</Subtitle>
-        </SubtitleWrapper>
-      </HeadingWrapper>
-      <SectionNaming>Калорийность</SectionNaming>
-      <RadioWrapper $margin={30}>
-        {calories.map(({ id, heading, description }) => (
-          <RadioBtn
-            key={id}
-            heading={heading}
-            description={description}
-            isActive={selectedCalories === id}
-            onClick={() => setSelectedCalories(id)}
-          />
-        ))}
-      </RadioWrapper>
-      <SectionNaming>Продолжительность</SectionNaming>
-      <RadioWrapper $margin={40}>
-        {continuity.map(({ id, heading, description }) => (
-          <RadioBtn
-            key={id}
-            heading={heading}
-            description={description}
-            isActive={selectedDuration === id}
-            onClick={() => setSelectedDuration(id)}
-          />
-        ))}
-      </RadioWrapper>
-      <div style={{ display: "flex", gap: "10px" }}>
-        <h3>Выберите, сколько дней в неделю вы хотите питаться</h3>
-        <div style={{ display: "flex" }}>
-          <div>5</div>
-          <div>6</div>
-          <div>7</div>
-        </div>
-      </div>
-      <ExtraHeading>Пример дневного рациона</ExtraHeading>
-      <ExtraDescription>
-        6 блюд. Калорийность — 1 235 ккал. Белки — 103 г; жиры — 37 г; углеводы
-        — 120 г
-      </ExtraDescription>
+      <Wrapper>
+        <HeadingWrapper>
+          <Title>{visibleItem.title}</Title>
+          <SubtitleWrapper>
+            <Plate />
+            <Subtitle>Каждый день новое меню</Subtitle>
+          </SubtitleWrapper>
+        </HeadingWrapper>
 
-      <DaysWrapper>
-        {daysOfWeek.map(({ id, day, key }) => (
-          <SmallRadio
-            key={id}
-            text={day}
-            isActive={selectedDay === key}
-            onClick={() => setSelectedDay(key)}
-          />
-        ))}
-      </DaysWrapper>
+        <MealPlanSelector
+          selectedCalories={selectedCalories}
+          setSelectedCalories={setSelectedCalories}
+          selectedDuration={selectedDuration}
+          setSelectedDuration={setSelectedDuration}
+        />
 
-      <Meals>
-        {currentDishes.map(({ id, img, time, portion, name }) => (
-          <Meal key={id}>
-            <img width="270px" src={img} alt="" />
-            <MealTime>
-              <MealTimeContent>{time}</MealTimeContent>
-              <MealTimeContent>{portion}</MealTimeContent>
-            </MealTime>
-            <MealDescription>{name}</MealDescription>
-          </Meal>
-        ))}
-      </Meals>
+        <NumberOfDays>
+          <NumberOfDaysTitle>
+            Выберите, сколько дней в неделю вы хотите питаться
+          </NumberOfDaysTitle>
+          <ButtonSelectContainer border={true}>
+            {days.map((day) => (
+              <ButtonSelect
+                key={day}
+                isActive={selectedDayOfNutrition === day}
+                onClick={() => setSelectedDayOfNutrition(day)}
+              >
+                {day}
+              </ButtonSelect>
+            ))}
+          </ButtonSelectContainer>
+        </NumberOfDays>
+        <ExtraHeading>Пример дневного рациона</ExtraHeading>
+        <ExtraDescription>
+          6 блюд. Калорийность — 1 235 ккал. Белки — 103 г; жиры — 37 г;
+          углеводы — 120 г
+        </ExtraDescription>
+
+        <DaysOfWeek selectedDay={selectedDay} setSelectedDay={setSelectedDay} />
+        <Meals currentDishes={currentDishes} />
+      </Wrapper>
+      <PremiumFooter />
     </Root>
   );
 };

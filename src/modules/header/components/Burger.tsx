@@ -2,7 +2,7 @@ import { Colors } from "@shared/styles/Colors";
 import { items } from "../consts";
 import styled from "styled-components";
 
-const Ul = styled.ul`
+const Root = styled.ul`
   position: absolute;
   top: 50px;
   right: 0;
@@ -47,11 +47,11 @@ const Ul = styled.ul`
 
 const Burger = () => {
   return (
-    <Ul>
+    <Root>
       {items.map((item) => (
         <li key={item.id}>{item.label}</li>
       ))}
-    </Ul>
+    </Root>
   );
 };
 

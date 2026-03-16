@@ -18,6 +18,11 @@ const Root = styled.div<{ $isActive?: boolean }>`
   line-height: normal;
   background-color: ${({ $isActive }) =>
     $isActive ? Colors.backgroundKcal : "transparent"};
+  user-select: none;
+
+  &:hover {
+    background-color: ${Colors.backgroundKcal};
+  }
 
   @media ${Device.Laptop} {
     font-size: 20px;

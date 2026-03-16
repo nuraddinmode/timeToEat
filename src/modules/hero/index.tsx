@@ -6,6 +6,19 @@ import { Colors } from "@shared/styles/Colors";
 import { Button } from "@shared/components/Button";
 
 const Root = styled.div`
+  padding-right: 20px;
+  padding-left: 20px;
+
+  @media ${Device.Tablet} {
+    gap: 40px;
+  }
+  @media ${Device.Laptop} {
+    padding-right: 60px;
+    padding-left: 60px;
+  }
+`;
+
+const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -123,6 +136,13 @@ const SecondBtn = styled.button`
   font-weight: 700;
   line-height: normal;
 
+  &:hover {
+    background-color: ${Colors.primary};
+    color: ${Colors.white};
+    border: 1px solid ${Colors.primary};
+    border-radius: 40px;
+  }
+
   @media ${Device.Tablet} {
     padding: 9px 26px;
     border: 1px solid;
@@ -137,31 +157,33 @@ const Hero = () => {
 
   return (
     <Root>
-      <div>
-        {isMobile ? (
-          <Content>
-            <Title>Прогрессивное питание на каждый день</Title>
-            <Description>
-              Сбалансированный рацион в современном формате — Супер-боул
-            </Description>
-          </Content>
-        ) : (
-          <>
-            <Title>Доставка прогрессивного питания для гурманов</Title>
-          </>
-        )}
+      <Wrapper>
+        <div>
+          {isMobile ? (
+            <Content>
+              <Title>Прогрессивное питание на каждый день</Title>
+              <Description>
+                Сбалансированный рацион в современном формате — Супер-боул
+              </Description>
+            </Content>
+          ) : (
+            <>
+              <Title>Доставка прогрессивного питания для гурманов</Title>
+            </>
+          )}
 
-        <Buttons>
-          <Button>Подобрать питание</Button>
-          <SecondBtn>Получить консультацию</SecondBtn>
-        </Buttons>
-      </div>
+          <Buttons>
+            <Button>Подобрать питание</Button>
+            <SecondBtn>Получить консультацию</SecondBtn>
+          </Buttons>
+        </div>
 
-      <HeroMedia>
-        <CircleBig></CircleBig>
-        <CircleSmall></CircleSmall>
-        <DishImage src={dish} alt="Блюдо" />
-      </HeroMedia>
+        <HeroMedia>
+          <CircleBig></CircleBig>
+          <CircleSmall></CircleSmall>
+          <DishImage src={dish} alt="Блюдо" />
+        </HeroMedia>
+      </Wrapper>
     </Root>
   );
 };

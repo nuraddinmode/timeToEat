@@ -1,6 +1,6 @@
 import type { ContentProps } from "../types";
 
-export const content: ContentProps[] = [
+const content: ContentProps[] = [
   {
     id: 1,
     text: "По городу бесплатно",
@@ -18,3 +18,5 @@ export const content: ContentProps[] = [
   },
   { id: 4, text: "Пригород 50 км — 500 ₽", color: "#FC5239" },
 ];
+
+export { content };

@@ -10,3 +10,4 @@ export { default as dish8 } from "./img/dish9.png";
 export { default as dish9 } from "./img/dish10.png";
 export { default as dish10 } from "./img/dish11.png";
 export { default as salad } from "./img/salad.jpg";
+export { default as woman } from "./img/women.png";

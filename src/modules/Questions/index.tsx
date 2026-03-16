@@ -7,6 +7,20 @@ import { Device } from "@shared/styles/media";
 import Arrow from "@assets/icons/arrowVector.svg?component";
 import { Colors } from "@shared/styles/Colors";
 
+const Root = styled.div`
+  padding-right: 20px;
+  padding-left: 20px;
+
+  @media ${Device.Tablet} {
+    gap: 40px;
+  }
+  @media ${Device.Laptop} {
+    padding-right: 60px;
+    padding-left: 60px;
+    margin-bottom: 110px;
+  }
+`;
+
 const Chapters = styled.div`
   display: flex;
   gap: 30px;
@@ -60,13 +74,12 @@ const QuestionTitle = styled.h3`
   font-family: "TT Norms Pro";
   font-size: 18px;
   font-weight: 700;
+  user-select: none;
 
   @media ${Device.Laptop} {
     font-size: 24px;
   }
 `;
-
-/* ✅ Плавное раскрытие без двойной анимации */
 
 const AnswerWrapper = styled.div<{ $open: boolean }>`
   display: grid;
@@ -84,6 +97,7 @@ const Answer = styled.div`
   font-family: "TT Norms Pro";
   font-size: 16px;
   line-height: 1.5;
+  user-select: none;
 `;
 
 const StyledArrow = styled(Arrow)<{ $open: boolean }>`
@@ -111,7 +125,7 @@ const Questions = () => {
   };
 
   return (
-    <div>
+    <Root>
       <Title>Частые вопросы</Title>
 
       <Chapters>
@@ -145,7 +159,7 @@ const Questions = () => {
           );
         })}
       </QuestionsWrapper>
-    </div>
+    </Root>
   );
 };
 

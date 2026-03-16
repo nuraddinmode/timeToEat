@@ -1,13 +1,13 @@
 import type { Device } from "@shared/types";
 
-export type RadioBtnProps = {
+type RadioBtnProps = {
   heading: string;
   description?: string;
   isActive?: boolean;
   onClick?: () => void;
 };
 
-export type titleContentType = {
+type titleContentType = {
   id: number;
   title: string;
   device: Device;
@@ -23,7 +23,7 @@ type Dish = {
   name: string;
 };
 
-export type WeekDay =
+type WeekDay =
   | "monday"
   | "tuesday"
   | "wednesday"
@@ -32,7 +32,7 @@ export type WeekDay =
   | "saturday"
   | "sunday";
 
-export type WeekMenu = Record<WeekDay, Dish[]>;
+type WeekMenu = Record<WeekDay, Dish[]>;
 
 type caloriesItem = {
   id: number;
@@ -40,10 +40,32 @@ type caloriesItem = {
   description?: string;
 };
 
-export type caloriesType = caloriesItem[];
+type caloriesType = caloriesItem[];
 
-export type DayOfWeekProps = {
+type DayOfWeekProps = {
   id: number;
   key: WeekDay;
   day: string;
+};
+
+type MealPlanState = {
+  selectedCalories: number;
+  selectedDuration: number;
+  selectedDay: WeekDay;
+  selectedDayOfNutrition: number;
+
+  setSelectedCalories: (value: number) => void;
+  setSelectedDuration: (value: number) => void;
+  setSelectedDay: (value: WeekDay) => void;
+  setSelectedDayOfNutrition: (value: number) => void;
+};
+
+export type {
+  RadioBtnProps,
+  titleContentType,
+  WeekDay,
+  WeekMenu,
+  caloriesType,
+  DayOfWeekProps,
+  MealPlanState,
 };

@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import { Button } from "@shared/components/Button";
 import { Colors } from "@shared/styles/Colors";
+import { Button } from "@shared/components/Button";
 import { Device } from "@shared/styles/media";
 import HandOnTable from "@assets/icons/handOnTable.svg?component";
 
@@ -11,7 +11,6 @@ const Root = styled.div`
   padding: 20px;
   align-items: center;
   gap: 20px;
-
   margin-bottom: 30px;
 
   @media ${Device.Laptop} {
@@ -34,7 +33,7 @@ const Left = styled.div`
   }
 `;
 
-const Description = styled.p`
+const FooterDescription = styled.p`
   color: ${Colors.white};
   font-family: "TT Norms Pro";
   font-size: 14px;
@@ -57,7 +56,7 @@ const Right = styled.div`
   }
 `;
 
-const Subtitle = styled.h2`
+const FooterSubtitle = styled.h2`
   color: ${Colors.white};
   font-family: "TT Norms Pro";
   font-style: normal;
@@ -94,11 +93,11 @@ const PremiumFooter = () => {
     <Root>
       <Left>
         <Button>Заказать 10 дней питания за 16 000 ₽</Button>
-        <Description>1 250 ккал за 1 600 ₽ в день</Description>
+        <FooterDescription>1 250 ккал за 1 600 ₽ в день</FooterDescription>
       </Left>
       <HandOnTable />
       <Right>
-        <Subtitle>Будем доставлять наборы каждый день.</Subtitle>
+        <FooterSubtitle>Будем доставлять наборы каждый день.</FooterSubtitle>
         <DescriptionTwo>
           Доставка осуществляется каждый день с 06:00 до 12:00. Выбор интервала
           — 2 часа. Заявки принимаются не позднее, чем за день до предполагаемой
@@ -109,4 +108,4 @@ const PremiumFooter = () => {
   );
 };
 
-export default PremiumFooter;
+export { PremiumFooter };

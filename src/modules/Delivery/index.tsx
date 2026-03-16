@@ -1,4 +1,4 @@
-import ColoredBtn from "./components/ColoredBtn";
+import { ColoredBtn } from "./components/ColoredBtn";
 import { content } from "./consts";
 import { Button } from "@shared/components/Button";
 import { useIsMobile } from "@shared/hooks/useIsMobile";
@@ -7,8 +7,19 @@ import { Device } from "@shared/styles/media";
 import styled from "styled-components";
 
 const Root = styled.div`
+  @media ${Device.Tablet} {
+    gap: 40px;
+  }
+  @media ${Device.Laptop} {
+    padding-right: 60px;
+    padding-left: 60px;
+  }
+`;
+
+const Wrapper = styled.div`
   background-color: ${Colors.mapColors};
   margin-bottom: 30px;
+  padding: 30px;
 
   @media ${Device.Laptop} {
     border-radius: 30px;
@@ -152,37 +163,39 @@ const Delivery = () => {
   const isMobile = useIsMobile();
   return (
     <Root>
-      <Title>Карта доставки</Title>
-      <DescWrapper>
-        <Description>
-          Доставка осуществляется каждый день с 06:00 до 12:00.
-        </Description>
-        <Description>Выбор интервала — 2 часа.</Description>
-      </DescWrapper>
-      <MainContent>
-        <iframe
-          src="https://yandex.ru/map-widget/v1/?um=constructor%3Af16d0a0eaa7cd4d51a223fa5149a5953ecc6908407cb4ce2d23b82e239f4538e&amp;source=constructor"
-          width={isMobile ? "345" : "982"}
-          height={isMobile ? "300" : "580"}
-        ></iframe>
-        <ContentWrapper>
-          <Buttons>
-            {content.map((item) => (
-              <ColoredBtn key={item.id} color={item.color}>
-                {item.text}
-              </ColoredBtn>
-            ))}
-          </Buttons>
-          <ExtraDescription>
-            Уточните стоимость и время доставки
-          </ExtraDescription>
-          <Contacts>
-            <Number>+7 988 500-1-700</Number>
-            <Time>c 09:00 до 21:00</Time>
-          </Contacts>
-          <Button width="307px">Перезвоните мне</Button>
-        </ContentWrapper>
-      </MainContent>
+      <Wrapper>
+        <Title>Карта доставки</Title>
+        <DescWrapper>
+          <Description>
+            Доставка осуществляется каждый день с 06:00 до 12:00.
+          </Description>
+          <Description>Выбор интервала — 2 часа.</Description>
+        </DescWrapper>
+        <MainContent>
+          <iframe
+            src="https://yandex.ru/map-widget/v1/?um=constructor%3Af16d0a0eaa7cd4d51a223fa5149a5953ecc6908407cb4ce2d23b82e239f4538e&amp;source=constructor"
+            width={isMobile ? "345" : "982"}
+            height={isMobile ? "300" : "580"}
+          ></iframe>
+          <ContentWrapper>
+            <Buttons>
+              {content.map((item) => (
+                <ColoredBtn key={item.id} color={item.color}>
+                  {item.text}
+                </ColoredBtn>
+              ))}
+            </Buttons>
+            <ExtraDescription>
+              Уточните стоимость и время доставки
+            </ExtraDescription>
+            <Contacts>
+              <Number>+7 988 500-1-700</Number>
+              <Time>c 09:00 до 21:00</Time>
+            </Contacts>
+            <Button width="307px">Перезвоните мне</Button>
+          </ContentWrapper>
+        </MainContent>
+      </Wrapper>
     </Root>
   );
 };

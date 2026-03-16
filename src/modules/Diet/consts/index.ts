@@ -1,9 +1,6 @@
-type Item = {
-  option: string;
-  value: string;
-};
+import type { ItemProps } from "../types";
 
-const activities: Item[] = [
+const activities: ItemProps[] = [
   { option: "Активность", value: "" },
   { option: "Минимальная", value: "1.2" },
   { option: "Лёгкая", value: "1.375" },
@@ -11,7 +8,7 @@ const activities: Item[] = [
   { option: "Высокая", value: "1.725" },
 ];
 
-const goals: Item[] = [
+const goals: ItemProps[] = [
   { option: "Выберите цель", value: "" },
   { option: "Похудеть", value: "lose" },
   { option: "Поддерживать вес", value: "maintain" },

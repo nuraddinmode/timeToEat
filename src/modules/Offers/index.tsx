@@ -5,6 +5,19 @@ import { Device } from "@shared/styles/media";
 import { Colors } from "@shared/styles/Colors";
 
 const Root = styled.div`
+  padding-right: 20px;
+  padding-left: 20px;
+
+  @media ${Device.Tablet} {
+    gap: 40px;
+  }
+  @media ${Device.Laptop} {
+    padding-right: 60px;
+    padding-left: 60px;
+  }
+`;
+
+const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   gap: 50px;
@@ -77,44 +90,47 @@ const Description = styled.p`
 const Offers = () => {
   return (
     <Root>
-      <Card $isReverse={false}>
-        <Like />
+      <Wrapper>
+        <Card $isReverse={false}>
+          <Like />
 
-        <Texts>
-          <Subtitle>Еда, которая сделает тебя лучше!</Subtitle>
-          <Descriptions>
-            <Description>
-              Мы помогаем создавать новое качество жизни для наших клиентов,
-              чтоб каждый человек был счастливым, здоровым и не отвлекался на
-              рутинные процессы.
-            </Description>
-            <Description>
-              Для этого мы создали новый уникальный продукт на рынке доставки
-              еды и приглашаем вас окунуться в гастрономический шик уже сегодня.
-            </Description>
-          </Descriptions>
-        </Texts>
-      </Card>
+          <Texts>
+            <Subtitle>Еда, которая сделает тебя лучше!</Subtitle>
+            <Descriptions>
+              <Description>
+                Мы помогаем создавать новое качество жизни для наших клиентов,
+                чтоб каждый человек был счастливым, здоровым и не отвлекался на
+                рутинные процессы.
+              </Description>
+              <Description>
+                Для этого мы создали новый уникальный продукт на рынке доставки
+                еды и приглашаем вас окунуться в гастрономический шик уже
+                сегодня.
+              </Description>
+            </Descriptions>
+          </Texts>
+        </Card>
 
-      <Card $isReverse={true}>
-        <Frame />
+        <Card $isReverse={true}>
+          <Frame />
 
-        <Texts>
-          <Subtitle>Изысканное меню высокой кухни</Subtitle>
-          <Descriptions>
-            <Description>
-              В наших блюдах мы продумали каждую деталь, все ингредиенты
-              тщательно подобраны и создают неповторимый вкус.
-            </Description>
-            <Description>
-              Качественные продукты, деликатесы и суперфуды, которые помогают
-              поддерживать здоровье и обмен веществ. Мы используем крафтовые
-              ингредиенты: с любовью выращиваем микрозелень, делаем соусы и
-              масла, маринуем мясо, рыбу и морепродукты.
-            </Description>
-          </Descriptions>
-        </Texts>
-      </Card>
+          <Texts>
+            <Subtitle>Изысканное меню высокой кухни</Subtitle>
+            <Descriptions>
+              <Description>
+                В наших блюдах мы продумали каждую деталь, все ингредиенты
+                тщательно подобраны и создают неповторимый вкус.
+              </Description>
+              <Description>
+                Качественные продукты, деликатесы и суперфуды, которые помогают
+                поддерживать здоровье и обмен веществ. Мы используем крафтовые
+                ингредиенты: с любовью выращиваем микрозелень, делаем соусы и
+                масла, маринуем мясо, рыбу и морепродукты.
+              </Description>
+            </Descriptions>
+          </Texts>
+        </Card>
+      </Wrapper>
     </Root>
   );
 };

@@ -6,7 +6,7 @@ import Temperature from "@assets/icons/temperature.svg?component";
 import Environment from "@assets/icons/environment.svg?component";
 import type { CardProps } from "../types";
 
-export const cards: CardProps[] = [
+const cards: CardProps[] = [
   {
     id: 1,
     Icon: Cook,
@@ -92,3 +92,5 @@ export const cards: CardProps[] = [
     ],
   },
 ];
+
+export { cards };

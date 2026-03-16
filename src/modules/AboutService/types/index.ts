@@ -1,6 +1,8 @@
-export type CardProps = {
+type CardProps = {
   id: number;
   Icon: React.FC<React.SVGProps<React.ReactSVGElement>>;
   laptop: [string, string];
   mobile: [string, string];
 };
+
+export type { CardProps };

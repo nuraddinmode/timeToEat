@@ -17,6 +17,10 @@ const Root = styled.div<{ $isActive?: boolean }>`
     $isActive ? Colors.backgroundKcal : "transparent"};
   cursor: pointer;
   transition: 0.2s ease;
+
+  &:hover {
+    background-color: ${Colors.backgroundKcal};
+  }
 `;
 
 const Heading = styled.h3`

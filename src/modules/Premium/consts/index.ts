@@ -18,12 +18,12 @@ import {
   dish10,
 } from "@assets/index";
 
-export const titleContent: titleContentType[] = [
+const titleContent: titleContentType[] = [
   { id: 0, title: "Программа питания", device: "mobile" },
   { id: 1, title: "Программа ПремиумБоул", device: "laptop" },
 ];
 
-export const calories: caloriesType = [
+const calories: caloriesType = [
   { id: 0, heading: "900 ккал", description: "3 блюда" },
   { id: 1, heading: "1250 ккал", description: "4 блюда" },
   { id: 2, heading: "1600 ккал", description: "5 блюд" },
@@ -31,7 +31,7 @@ export const calories: caloriesType = [
   { id: 4, heading: "Индивидуально подобрать" },
 ];
 
-export const continuity: caloriesType = [
+const continuity: caloriesType = [
   { id: 0, heading: "Пробные 2 дня", description: "за 2 900 ₽" },
   { id: 1, heading: "1 неделя", description: "1 700 ₽ в день" },
   { id: 2, heading: "2 недели", description: "1 600 ₽ в день" },
@@ -39,7 +39,7 @@ export const continuity: caloriesType = [
   { id: 4, heading: "4 недели", description: "1 450 ₽ в день" },
 ];
 
-export const daysOfWeek: DayOfWeekProps[] = [
+const daysOfWeek: DayOfWeekProps[] = [
   { id: 0, key: "monday", day: "понедельник" },
   { id: 1, key: "tuesday", day: "вторник" },
   { id: 2, key: "wednesday", day: "среда" },
@@ -49,7 +49,7 @@ export const daysOfWeek: DayOfWeekProps[] = [
   { id: 6, key: "sunday", day: "воскресенье" },
 ];
 
-export const dishes: WeekMenu = {
+const dishes: WeekMenu = {
   monday: [
     {
       id: 0,
@@ -267,3 +267,7 @@ export const dishes: WeekMenu = {
     },
   ],
 };
+
+const days = [5, 6, 7];
+
+export { titleContent, calories, continuity, daysOfWeek, dishes, days };

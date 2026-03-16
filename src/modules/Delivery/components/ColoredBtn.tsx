@@ -1,15 +1,7 @@
 import { Colors } from "@shared/styles/Colors";
 import { Device } from "@shared/styles/media";
 import styled from "styled-components";
-
-interface RootProps {
-  $color: string;
-}
-
-interface ColoredBtnProps {
-  children: React.ReactNode;
-  color: string;
-}
+import type { RootProps, ColoredBtnProps } from "../types";
 
 const Root = styled.div<RootProps>`
   display: flex;
@@ -38,4 +30,4 @@ const Root = styled.div<RootProps>`
 const ColoredBtn = ({ children, color }: ColoredBtnProps) => {
   return <Root $color={color}>{children}</Root>;
 };
-export default ColoredBtn;
+export { ColoredBtn };

@@ -1,9 +1,6 @@
-type NavItem = {
-  label: string;
-  id: number;
-};
+import type { NavItemProps } from "../types";
 
-const items: NavItem[] = [
+const items: NavItemProps[] = [
   { id: 0, label: "Подбор рациона" },
   { id: 1, label: "Программы питания" },
   { id: 2, label: "О нас" },

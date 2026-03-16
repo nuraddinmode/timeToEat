@@ -3,7 +3,7 @@ import { Burger } from "./Burger";
 import BurgerIcon from "@assets/icons/burgerIcon.svg?component";
 import styled from "styled-components";
 
-const Menu = styled.div`
+const Root = styled.div`
   position: relative;
 `;
 
@@ -15,12 +15,12 @@ const MobileNavigation = () => {
   };
 
   return (
-    <Menu>
+    <Root>
       <button onClick={handleClick}>
         <BurgerIcon />
       </button>
       {isOpen && <Burger />}
-    </Menu>
+    </Root>
   );
 };
 
