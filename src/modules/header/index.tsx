@@ -8,6 +8,21 @@ import styled from "styled-components";
 import { Device } from "@shared/styles/media";
 
 const Root = styled.div`
+  padding-top: 20px;
+  padding-right: 20px;
+  padding-left: 20px;
+
+  @media ${Device.Tablet} {
+    gap: 40px;
+  }
+  @media ${Device.Laptop} {
+    padding-top: 60px;
+    padding-right: 60px;
+    padding-left: 60px;
+  }
+`;
+
+const Wrapper = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -20,14 +35,15 @@ const Root = styled.div`
 
 const Header = () => {
   const isMobile = useIsMobile();
-  console.log(isMobile);
 
   return (
     <Root>
-      {isMobile ? <LogoMobile /> : <LogoDesktop />}
+      <Wrapper>
+        {isMobile ? <LogoMobile /> : <LogoDesktop />}
 
-      <nav>{isMobile ? <MobileNavigation /> : <Navigation />}</nav>
-      {!isMobile && <Contacts />}
+        <nav>{isMobile ? <MobileNavigation /> : <Navigation />}</nav>
+        {!isMobile && <Contacts />}
+      </Wrapper>
     </Root>
   );
 };

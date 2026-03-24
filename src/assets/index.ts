@@ -1,1 +1,13 @@
 export { default as dish } from "./img/dishDesktop.png";
+export { default as dish1 } from "./img/dish1.png";
+export { default as dish2 } from "./img/dish2.png";
+export { default as dish3 } from "./img/dish3.png";
+export { default as dish4 } from "./img/dish11.png";
+export { default as dish5 } from "./img/dish5.png";
+export { default as dish6 } from "./img/dish6.png";
+export { default as dish7 } from "./img/dish8.png";
+export { default as dish8 } from "./img/dish9.png";
+export { default as dish9 } from "./img/dish10.png";
+export { default as dish10 } from "./img/dish11.png";
+export { default as salad } from "./img/salad.jpg";
+export { default as woman } from "./img/women.png";

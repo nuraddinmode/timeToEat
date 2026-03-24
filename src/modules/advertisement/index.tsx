@@ -82,7 +82,7 @@ const Advertisement = () => {
   const isMobile = useIsMobile();
 
   const visibleItem = content.find((item) =>
-    isMobile ? item.device === "mobile" : item.device === "desktop",
+    isMobile ? item.device === "mobile" : item.device === "laptop",
   );
 
   if (!visibleItem) return null;
