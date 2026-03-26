@@ -51,7 +51,7 @@ const HeadingWrapper = styled.div`
 
 const Title = styled.h1`
   color: ${Colors.black};
-  font-family: "TT Norms Pro";
+  font-family: "Roboto", sans-serif;
   font-size: 24px;
   font-style: normal;
   font-weight: 500;
@@ -76,7 +76,7 @@ const SubtitleWrapper = styled.div`
 
 const Subtitle = styled.h3`
   color: ${Colors.primary};
-  font-family: "TT Norms Pro";
+  font-family: "Roboto", sans-serif;
   font-size: 14px;
   font-style: normal;
   font-weight: 500;
@@ -89,7 +89,7 @@ const Subtitle = styled.h3`
 
 const ExtraHeading = styled.h2`
   color: ${Colors.black};
-  font-family: "TT Norms Pro";
+  font-family: "Roboto", sans-serif;
   font-size: 18px;
   font-style: normal;
   font-weight: 500;
@@ -105,9 +105,9 @@ const ExtraHeading = styled.h2`
 `;
 
 const ExtraDescription = styled.p`
-  color: ${Colors.advertisement};
+  color: ${Colors.warmBeige};
   text-align: center;
-  font-family: "TT Norms Pro";
+  font-family: "Roboto", sans-serif;
   font-size: 14px;
   font-style: normal;
   font-weight: 500;
@@ -133,7 +133,7 @@ const NumberOfDays = styled.div`
 const NumberOfDaysTitle = styled.h3`
   max-width: 209px;
   color: ${Colors.secondary};
-  font-family: "TT Norms Pro";
+  font-family: "Roboto", sans-serif;
   font-size: 14px;
   font-style: normal;
   font-weight: 500;
@@ -159,6 +159,15 @@ const Premium = () => {
     (s) => s.setSelectedDayOfNutrition,
   );
 
+  // const mealsCount = useMealPlanStore((s) => s.mealsCount);
+  const setMealsCount = useMealPlanStore((s) => s.setMealsCount);
+
+  const pricePerDay = useMealPlanStore((s) => s.pricePerDay);
+  const setPricePerDay = useMealPlanStore((s) => s.setPricePerDay);
+
+  const totalPrice = useMealPlanStore((s) => s.totalPrice);
+  const setTotalPrice = useMealPlanStore((s) => s.setTotalPrice);
+
   const currentDishes = dishes[selectedDay];
 
   const visibleItem = titleContent.find((item) =>
@@ -183,6 +192,9 @@ const Premium = () => {
           setSelectedCalories={setSelectedCalories}
           selectedDuration={selectedDuration}
           setSelectedDuration={setSelectedDuration}
+          setMealsCount={setMealsCount}
+          setPricePerDay={setPricePerDay}
+          setTotalPrice={setTotalPrice}
         />
 
         <NumberOfDays>
@@ -210,7 +222,11 @@ const Premium = () => {
         <DaysOfWeek selectedDay={selectedDay} setSelectedDay={setSelectedDay} />
         <Meals currentDishes={currentDishes} />
       </Wrapper>
-      <PremiumFooter />
+      <PremiumFooter
+        pricePerDay={pricePerDay}
+        totalPrice={totalPrice}
+        selectedCalories={selectedCalories}
+      />
     </Root>
   );
 };

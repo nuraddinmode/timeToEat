@@ -7,7 +7,7 @@ import { Colors } from "@shared/styles/Colors";
 
 const Root = styled.div`
   min-height: 40px;
-  background-color: ${Colors.advertisement};
+  background-color: ${Colors.warmBeige};
   display: flex;
   align-items: center;
   justify-content: space-around;
@@ -36,8 +36,7 @@ const Content = styled.div`
 
 const Description = styled.p`
   color: ${Colors.white};
-  font-variant-ligatures: none;
-  font-family: "TT Norms Pro";
+  font-family: "Roboto", sans-serif;
   font-size: 14px;
   font-style: normal;
   font-weight: 700;
@@ -65,7 +64,7 @@ const Button = styled.button`
     cursor: pointer;
     color: ${Colors.white};
     font-variant-ligatures: none;
-    font-family: "TT Norms Pro";
+    font-family: "Roboto", sans-serif;
     font-size: 15px;
     font-style: normal;
     font-weight: 700;

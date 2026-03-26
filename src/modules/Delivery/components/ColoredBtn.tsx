@@ -14,7 +14,7 @@ const Root = styled.div<RootProps>`
   margin: 5px;
 
   color: ${Colors.secondary};
-  font-family: "TT Norms Pro";
+  font-family: "Roboto", sans-serif;
   font-size: 12px;
   font-style: normal;
   font-weight: 500;

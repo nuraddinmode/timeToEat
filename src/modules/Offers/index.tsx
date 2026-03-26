@@ -46,7 +46,7 @@ const Card = styled.div<{ $isReverse?: boolean }>`
 const Subtitle = styled.h2`
   color: ${Colors.black};
   text-align: center;
-  font-family: "TT Norms Pro";
+  font-family: "Roboto", sans-serif;
   font-size: 24px;
   font-style: normal;
   font-weight: 500;
@@ -76,7 +76,7 @@ const Descriptions = styled.div`
 
 const Description = styled.p`
   color: ${Colors.secondary};
-  font-family: "TT Norms Pro";
+  font-family: "Roboto", sans-serif;
   font-size: 14px;
   font-style: normal;
   font-weight: 500;

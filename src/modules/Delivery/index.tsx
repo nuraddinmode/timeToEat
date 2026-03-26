@@ -17,7 +17,7 @@ const Root = styled.div`
 `;
 
 const Wrapper = styled.div`
-  background-color: ${Colors.mapColors};
+  background-color: ${Colors.cream};
   margin-bottom: 30px;
   padding: 30px;
 
@@ -31,7 +31,7 @@ const Wrapper = styled.div`
 const Title = styled.div`
   color: ${Colors.black};
   text-align: center;
-  font-family: "TT Norms Pro";
+
   font-size: 24px;
   font-style: normal;
   font-weight: 500;
@@ -61,7 +61,7 @@ const Description = styled.p`
   max-width: 335px;
   color: ${Colors.secondary};
   text-align: center;
-  font-family: "TT Norms Pro";
+  font-family: "Roboto", sans-serif;
   font-size: 14px;
   font-style: normal;
   font-weight: 500;
@@ -103,7 +103,7 @@ const Buttons = styled.div`
 const ExtraDescription = styled.p`
   color: ${Colors.secondary};
   text-align: center;
-  font-family: "TT Norms Pro";
+  font-family: "Roboto", sans-serif;
   font-size: 14px;
   font-style: normal;
   font-weight: 400;
@@ -120,7 +120,7 @@ const ExtraDescription = styled.p`
 const Number = styled.p`
   color: ${Colors.secondary};
   text-align: center;
-  font-family: "TT Norms Pro";
+  font-family: "Roboto", sans-serif;
   font-size: 24px;
   font-style: normal;
   font-weight: 700;
@@ -132,8 +132,8 @@ const Number = styled.p`
 `;
 
 const Time = styled.p`
-  color: var(--brown2, #756d6d);
-  font-family: "TT Norms Pro";
+  color: ${Colors.mutedGray};
+  font-family: "Roboto", sans-serif;
   font-size: 12px;
   font-style: normal;
   font-weight: 500;

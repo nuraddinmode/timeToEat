@@ -6,22 +6,22 @@ import { Device } from "@shared/styles/media";
 const Root = styled.div<{ $isActive?: boolean }>`
   padding: 8px 23px;
   border-radius: 40px;
-  border: 1px solid ${Colors.backgroundKcal};
+  border: 1px solid ${Colors.lightSand};
   cursor: pointer;
   white-space: nowrap;
 
   color: ${Colors.secondary};
-  font-family: "TT Norms Pro";
+  font-family: "Roboto", sans-serif;
   font-size: 24px;
   font-style: normal;
   font-weight: 500;
   line-height: normal;
   background-color: ${({ $isActive }) =>
-    $isActive ? Colors.backgroundKcal : "transparent"};
+    $isActive ? Colors.lightSand : "transparent"};
   user-select: none;
 
   &:hover {
-    background-color: ${Colors.backgroundKcal};
+    background-color: ${Colors.lightSand};
   }
 
   @media ${Device.Laptop} {

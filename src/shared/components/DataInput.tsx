@@ -4,7 +4,7 @@ import { Device } from "@shared/styles/media";
 
 const Root = styled.input`
   border-radius: 40px;
-  background: ${Colors.lightPink};
+  background: ${Colors.background};
   width: 308px;
   padding: 15px 13px;
 

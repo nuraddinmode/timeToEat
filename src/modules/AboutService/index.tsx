@@ -45,7 +45,7 @@ const Card = styled.div`
 const Title = styled.h2`
   color: ${Colors.black};
   text-align: center;
-  font-family: "TT Norms Pro";
+  font-family: "Roboto", sans-serif;
   font-size: 24px;
   font-style: normal;
   font-weight: 500;
@@ -63,7 +63,7 @@ const Subtitle = styled.h2`
   color: ${Colors.secondary};
   max-width: 335px;
   text-align: center;
-  font-family: "TT Norms Pro";
+  font-family: "Roboto", sans-serif;
   font-size: 20px;
   font-style: normal;
   font-weight: 700;
@@ -81,7 +81,7 @@ const Paragraph = styled.p`
   color: ${Colors.secondary};
   max-width: 335px;
   text-align: center;
-  font-family: "TT Norms Pro";
+  font-family: "Roboto", sans-serif;
   font-size: 14px;
   font-style: normal;
   font-weight: 400;
@@ -109,8 +109,8 @@ const AboutService = () => {
     <Root>
       <Title>О нашем сервисе</Title>
       <Cards>
-        {cards.map(({ Icon, laptop, mobile }) => (
-          <Card>
+        {cards.map(({ Icon, laptop, mobile, id }) => (
+          <Card key={id}>
             <StyledIcon as={Icon} />
             <Subtitle>{isMobile ? laptop[0] : mobile[0]}</Subtitle>
             <Paragraph>{isMobile ? laptop[1] : mobile[1]}</Paragraph>

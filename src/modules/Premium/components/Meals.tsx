@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { Device } from "@shared/styles/media";
 import { Colors } from "@shared/styles/Colors";
+import type { MealTime } from "../types";
 
 const Root = styled.div`
   display: flex;
@@ -35,8 +36,8 @@ const MealTime = styled.div`
 `;
 
 const MealTimeContent = styled.p`
-  color: ${Colors.advertisement};
-  font-family: "TT Norms Pro";
+  color: ${Colors.warmBeige};
+  font-family: "Roboto", sans-serif;
   font-size: 12px;
   font-style: normal;
   font-weight: 500;
@@ -46,7 +47,7 @@ const MealTimeContent = styled.p`
 const MealDescription = styled.p`
   max-width: 270px;
   color: ${Colors.secondary};
-  font-family: "TT Norms Pro";
+  font-family: "Roboto", sans-serif;
   font-size: 16px;
   font-style: normal;
   font-weight: 500;
@@ -58,19 +59,33 @@ const MealDescription = styled.p`
   }
 `;
 
-const Meals = ({ currentDishes }: any) => {
+const Meals = ({ currentDishes }) => {
   return (
     <Root>
-      {currentDishes.map(({ id, img, time, portion, name }) => (
-        <Meal key={id}>
-          <img width="270px" src={img} alt="" />
-          <MealTime>
-            <MealTimeContent>{time}</MealTimeContent>
-            <MealTimeContent>{portion}</MealTimeContent>
-          </MealTime>
-          <MealDescription>{name}</MealDescription>
-        </Meal>
-      ))}
+      {currentDishes.map(
+        ({
+          id,
+          img,
+          time,
+          portion,
+          name,
+        }: {
+          id: number;
+          img: string;
+          time: MealTime;
+          portion: string;
+          name: string;
+        }) => (
+          <Meal key={id}>
+            <img width="270px" src={img} alt="" />
+            <MealTime>
+              <MealTimeContent>{time}</MealTimeContent>
+              <MealTimeContent>{portion}</MealTimeContent>
+            </MealTime>
+            <MealDescription>{name}</MealDescription>
+          </Meal>
+        ),
+      )}
     </Root>
   );
 };

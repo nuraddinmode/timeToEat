@@ -10,7 +10,7 @@ const Root = styled.ul`
 
 const Item = styled.li`
   color: ${Colors.secondary};
-  font-family: "TT Norms Pro";
+  font-family: "Roboto", sans-serif;
   font-size: 18px;
   font-style: normal;
   font-weight: 500;

@@ -21,7 +21,7 @@ const Root = styled.div`
 
 const Wrapper = styled.div`
   padding: 30px;
-  background-color: ${Colors.brown};
+  background-color: ${Colors.dustyRose};
   border-radius: 30px;
 
   @media ${Device.Laptop} {
@@ -34,7 +34,7 @@ const Wrapper = styled.div`
 const Title = styled.h2`
   color: ${Colors.white};
   text-align: center;
-  font-family: "TT Norms Pro";
+  font-family: "Roboto", sans-serif;
   font-size: 24px;
   font-style: normal;
   font-weight: 500;
@@ -62,9 +62,9 @@ const DescriptionContainer = styled.div`
   }
 `;
 
-const Desctiption = styled.p`
+const Description = styled.p`
   color: ${Colors.white};
-  font-family: "TT Norms Pro";
+  font-family: "Roboto", sans-serif;
   font-size: 14px;
   font-style: normal;
   font-weight: 500;
@@ -100,10 +100,10 @@ const Subscription = () => {
           <Title>Будьте всегда в курсе!</Title>
           <DescriptionContainer>
             <Email />
-            <Desctiption>
+            <Description>
               Подпишитесь на рассылку и будьте всегда в курсе новинок, акций и
               новостей!
-            </Desctiption>
+            </Description>
           </DescriptionContainer>
         </div>
         <FormContainer>

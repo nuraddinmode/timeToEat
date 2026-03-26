@@ -6,11 +6,11 @@ const Root = styled.div<{ $isActive?: boolean }>`
   padding: 9px 11px;
 
   &:hover {
-    background-color: ${Colors.backgroundKcal};
+    background-color: ${Colors.lightSand};
   }
 
   background-color: ${({ $isActive }) =>
-    $isActive ? Colors.backgroundKcal : "transparent"};
+    $isActive ? Colors.lightSand : "transparent"};
 `;
 
 const ButtonSelect = ({ children, isActive, onClick }: any) => {

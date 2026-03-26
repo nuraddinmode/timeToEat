@@ -14,7 +14,7 @@ const Root = styled.div<{ width?: string }>`
   width: ${({ width }) => width || "fit-content"};
   color: ${Colors.white};
 
-  font-family: "TT Norms Pro";
+  font-family: "Roboto", sans-serif;
   font-size: 14px;
   font-style: normal;
   font-weight: 700;

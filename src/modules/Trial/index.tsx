@@ -30,9 +30,8 @@ const Wrapper = styled.div`
 
 const Title = styled.h1`
   color: ${Colors.black};
-
   text-align: center;
-  font-family: "TT Norms Pro";
+  font-family: "Roboto", sans-serif;
   font-size: 24px;
   font-style: normal;
   font-weight: 500;
@@ -56,7 +55,7 @@ const DescriptionWrapper = styled.div`
 
 const Description = styled.p`
   color: ${Colors.secondary};
-  font-family: "TT Norms Pro";
+  font-family: "Roboto", sans-serif;
   font-size: 18px;
   font-style: normal;
   font-weight: 400;

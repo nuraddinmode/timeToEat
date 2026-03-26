@@ -10,7 +10,7 @@ const Root = styled.ul`
   width: 220px;
   padding: 16px 0;
 
-  background: ${Colors.dietForm};
+  background: ${Colors.paleOlive};
   border-radius: 12px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
 
@@ -40,7 +40,7 @@ const Root = styled.ul`
     transition: background 0.2s ease;
 
     &:hover {
-      background: ${Colors.advertisement};
+      background: ${Colors.warmBeige};
     }
   }
 `;

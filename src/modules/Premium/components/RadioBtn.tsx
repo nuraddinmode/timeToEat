@@ -11,21 +11,21 @@ const Root = styled.div<{ $isActive?: boolean }>`
   width: 240px;
   height: 96px;
   border-radius: 30px;
-  border: 1px solid ${Colors.backgroundKcal};
+  border: 1px solid ${Colors.lightSand};
   gap: 5px;
   background-color: ${({ $isActive }) =>
-    $isActive ? Colors.backgroundKcal : "transparent"};
+    $isActive ? Colors.lightSand : "transparent"};
   cursor: pointer;
   transition: 0.2s ease;
 
   &:hover {
-    background-color: ${Colors.backgroundKcal};
+    background-color: ${Colors.lightSand};
   }
 `;
 
 const Heading = styled.h3`
   color: ${Colors.secondary};
-  font-family: "TT Norms Pro";
+  font-family: "Roboto", sans-serif;
   font-size: 16px;
   font-style: normal;
   font-weight: 500;
@@ -39,7 +39,7 @@ const Heading = styled.h3`
 
 const Description = styled.p`
   color: ${Colors.secondary};
-  font-family: "TT Norms Pro";
+  font-family: "Roboto", sans-serif;
   text-align: center;
   font-size: 14px;
   font-style: normal;
@@ -60,7 +60,7 @@ const RadioBtn = ({
   return (
     <Root $isActive={isActive} onClick={onClick}>
       <Heading>{heading}</Heading>
-      {description && <Description>{description}</Description>}{" "}
+      {description && <Description>{description}</Description>}
     </Root>
   );
 };
