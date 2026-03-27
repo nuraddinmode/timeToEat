@@ -5,6 +5,8 @@ import { useIsMobile } from "@shared/hooks/useIsMobile";
 import { Colors } from "@shared/styles/Colors";
 import { Device } from "@shared/styles/media";
 import styled from "styled-components";
+import { useState } from "react";
+import { PhoneModal } from "@shared/UI/Modals/PhoneModal";
 
 const Root = styled.div`
   @media ${Device.Tablet} {
@@ -161,6 +163,8 @@ const ContentWrapper = styled.div`
 
 const Delivery = () => {
   const isMobile = useIsMobile();
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   return (
     <Root>
       <Wrapper>
@@ -192,7 +196,16 @@ const Delivery = () => {
               <Number>+7 988 500-1-700</Number>
               <Time>c 09:00 до 21:00</Time>
             </Contacts>
-            <Button width="307px">Перезвоните мне</Button>
+            <Button onClick={() => setIsModalOpen(true)} width="307px">
+              Перезвоните мне
+            </Button>
+            <PhoneModal
+              title="Заказ обратного звонка"
+              description="Введи номер телефона, на который необходимо перезвонить"
+              buttonText="Перезвоните мне"
+              isOpen={isModalOpen}
+              onClose={() => setIsModalOpen(false)}
+            />
           </ContentWrapper>
         </MainContent>
       </Wrapper>

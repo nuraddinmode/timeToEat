@@ -1,5 +1,7 @@
 import { Colors } from "@shared/styles/Colors";
 import styled from "styled-components";
+import { PhoneModal } from "@shared/UI/Modals/PhoneModal";
+import { useState } from "react";
 
 const Root = styled.div`
   display: flex;
@@ -7,16 +9,17 @@ const Root = styled.div`
   align-items: end;
 `;
 
-const Anchor = styled.a`
+const Anchor = styled.button`
   color: #4d8f76;
   font-family: "Roboto", sans-serif;
   font-size: 14px;
   font-style: normal;
   font-weight: 500;
   line-height: normal;
+  cursor: pointer;
 `;
 
-const Number = styled.h3`
+const Number = styled.a`
   color: ${Colors.secondary};
   text-align: right;
   font-family: "Roboto", sans-serif;
@@ -37,11 +40,21 @@ const Time = styled.p`
 `;
 
 const Contacts = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   return (
     <Root>
-      <Anchor href="tel:+7 988 500-1-700">Перезвоните мне</Anchor>
-      <Number>+7 988 500-1-700</Number>
+      <Anchor onClick={() => setIsModalOpen(true)}>Перезвоните мне</Anchor>
+      <Number href="tel:+7 988 500-1-700">+7 988 500-1-700</Number>
       <Time>c 09:00 до 21:00</Time>
+
+      <PhoneModal
+        title="Заказ обратного звонка"
+        description="Введи номер телефона, на который необходимо перезвонить"
+        buttonText="Перезвоните мне"
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+      />
     </Root>
   );
 };

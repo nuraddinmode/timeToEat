@@ -32,7 +32,7 @@ const calories: caloriesType = [
 ];
 
 const continuity: caloriesType = [
-  { id: 0, heading: "Пробные 2 дня", description: "за 2 900 ₽" },
+  { id: 0, heading: "Пробные 2 дня" },
   {
     id: 1,
     heading: "1 неделя",

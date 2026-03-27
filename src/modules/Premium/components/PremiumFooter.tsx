@@ -5,6 +5,8 @@ import { Device } from "@shared/styles/media";
 import HandOnTable from "@assets/icons/handOnTable.svg?component";
 import { useMealPlanStore } from "../store";
 import { calories, continuity } from "../consts";
+import { OrderModal } from "@shared/UI/Modals/OrderModal";
+import { useState } from "react";
 
 const Root = styled.div`
   background-color: ${Colors.sageGreen};
@@ -107,12 +109,19 @@ const PremiumFooter = ({
   const selectedCaloryHeading =
     calories.find((c) => c.id === selectedCalories)?.heading ?? "";
 
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   return (
     <Root>
       <Left>
-        <Button>
+        <Button onClick={() => setIsModalOpen(true)}>
           Заказать {daysInWeek} дней питания за {totalPrice} ₽
         </Button>
+
+        <OrderModal
+          isOpen={isModalOpen}
+          onClose={() => setIsModalOpen(false)}
+        />
 
         <FooterDescription>
           {selectedCaloryHeading} за {pricePerDay} ₽ в день

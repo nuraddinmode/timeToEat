@@ -34,8 +34,12 @@ const Root = styled.div<{ width?: string }>`
   }
 `;
 
-const Button = ({ children, width }: ButtonProps) => {
-  return <Root width={width}>{children}</Root>;
+const Button = ({ children, width, onClick }: ButtonProps) => {
+  return (
+    <Root onClick={onClick} width={width}>
+      {children}
+    </Root>
+  );
 };
 
 export { Button };
