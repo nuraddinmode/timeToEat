@@ -34,7 +34,7 @@ const Chapters = styled.div`
 
 const Title = styled.h1`
   color: ${Colors.black};
-  font-family: "TT Norms Pro";
+  font-family: "Roboto", sans-serif;
   font-size: 24px;
   font-weight: 500;
   margin-bottom: 20px;
@@ -71,7 +71,7 @@ const QuestionHeader = styled.div`
 
 const QuestionTitle = styled.h3`
   color: ${Colors.secondary};
-  font-family: "TT Norms Pro";
+  font-family: "Roboto", sans-serif;
   font-size: 18px;
   font-weight: 700;
   user-select: none;
@@ -94,7 +94,7 @@ const AnswerInner = styled.div`
 const Answer = styled.div`
   padding: 0 30px 30px 30px;
   color: ${Colors.secondary};
-  font-family: "TT Norms Pro";
+  font-family: "Roboto", sans-serif;
   font-size: 16px;
   line-height: 1.5;
   user-select: none;

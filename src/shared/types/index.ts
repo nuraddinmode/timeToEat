@@ -5,6 +5,7 @@ type Device = "mobile" | "laptop";
 type ButtonProps = {
   children: ReactNode;
   width?: string;
+  onClick?: () => void;
 };
 
 type SmallRadioProps = {

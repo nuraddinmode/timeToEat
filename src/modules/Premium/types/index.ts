@@ -38,6 +38,8 @@ type caloriesItem = {
   id: number;
   heading: string;
   description?: string;
+  mealsCount?: number;
+  daysInWeek?: number;
 };
 
 type caloriesType = caloriesItem[];
@@ -48,18 +50,6 @@ type DayOfWeekProps = {
   day: string;
 };
 
-type MealPlanState = {
-  selectedCalories: number;
-  selectedDuration: number;
-  selectedDay: WeekDay;
-  selectedDayOfNutrition: number;
-
-  setSelectedCalories: (value: number) => void;
-  setSelectedDuration: (value: number) => void;
-  setSelectedDay: (value: WeekDay) => void;
-  setSelectedDayOfNutrition: (value: number) => void;
-};
-
 export type {
   RadioBtnProps,
   titleContentType,
@@ -67,5 +57,5 @@ export type {
   WeekMenu,
   caloriesType,
   DayOfWeekProps,
-  MealPlanState,
+  MealTime,
 };

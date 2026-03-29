@@ -21,18 +21,15 @@ const Root = styled.div`
 
 const Container = styled.div`
   padding: 30px;
-  background: ${Colors.premiumFooter};
+  background: ${Colors.sageGreen};
   border-radius: 30px;
   position: relative;
-
-  @media ${Device.Laptop} {
-  }
 `;
 
 const Title = styled.h1`
   color: ${Colors.white};
   text-align: center;
-  font-family: "TT Norms Pro";
+  font-family: "Roboto", sans-serif;
   font-size: 24px;
   font-style: normal;
   font-weight: 500;

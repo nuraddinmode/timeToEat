@@ -1,7 +1,7 @@
 import { ButtonSelect } from "@shared/components/ButtonSelect";
 import { ButtonSelectContainer } from "@shared/components/ButtonSelectContainer";
 import { Button } from "@shared/components/Button";
-import Arrow from "@assets/icons/arrow.svg?component";
+// import Arrow from "@assets/icons/arrow.svg?component";
 import styled from "styled-components";
 import { Colors } from "@shared/styles/Colors";
 import { Device } from "@shared/styles/media";
@@ -20,7 +20,7 @@ const Root = styled.div`
 
 const Wrapper = styled.form`
   padding: 20px 10px 30px 10px;
-  background-color: ${Colors.dietForm};
+  background-color: ${Colors.lightOlive};
 
   margin-bottom: 40px;
   display: flex;
@@ -41,7 +41,7 @@ const Title = styled.h2`
   color: ${Colors.black};
   text-align: center;
   margin: 0 auto;
-  font-family: "TT Norms Pro";
+  font-family: "Roboto", sans-serif;
   font-size: 24px;
   font-style: normal;
   font-weight: 500;
@@ -93,8 +93,8 @@ const Row = styled.div`
 `;
 
 const GenderLabel = styled.label`
-  color: ${Colors.additionalText};
-  font-family: "TT Norms Pro";
+  color: ${Colors.mutedGray};
+  font-family: "Roboto", sans-serif;
   font-size: 12px;
   font-style: normal;
   font-weight: 500;
@@ -105,7 +105,7 @@ const GenderLabel = styled.label`
 `;
 
 const StyledInput = styled.input`
-  width: 100%; // чуть-чуть уменьшает ширину
+  width: 100%;
   padding: 13px 15px;
   border-radius: 60px;
   background-color: ${Colors.background};
@@ -113,7 +113,7 @@ const StyledInput = styled.input`
 
   &::placeholder {
     color: ${Colors.secondary};
-    font-family: "TT Norms Pro";
+    font-family: "Roboto", sans-serif;
     font-size: 13px;
     font-style: normal;
     font-weight: 500;
@@ -134,7 +134,7 @@ const StyledSelect = styled.select`
 
   background-color: ${Colors.background};
   color: ${Colors.secondary};
-  font-family: "TT Norms Pro";
+  font-family: "Roboto", sans-serif;
   font-size: 13px;
   font-style: normal;
   font-weight: 500;
@@ -184,17 +184,21 @@ const Diet = () => {
             <RowOfTwo>
               <StyledInput type="text" placeholder="Ваш возраст" />
               <StyledSelect name="activity" id="">
-                {activities.map(({ option, value }) => (
-                  <option value={value}>{option}</option>
+                {activities.map(({ id, option, value }) => (
+                  <option key={id} value={value}>
+                    {option}
+                  </option>
                 ))}
               </StyledSelect>
             </RowOfTwo>
             <RowColumn>
               <StyledSelect name="goal">
-                {goals.map(({ option, value }) => (
-                  <option value={value}>{option}</option>
+                {goals.map(({ option, value, id }) => (
+                  <option key={id} value={value}>
+                    {option}
+                  </option>
                 ))}
-                <Arrow />
+                {/* <Arrow /> */}
               </StyledSelect>
             </RowColumn>
           </Rows>

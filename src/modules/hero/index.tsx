@@ -1,9 +1,11 @@
 import { useIsMobile } from "@shared/hooks/useIsMobile";
+import { useState } from "react";
 import styled from "styled-components";
 import { dish } from "@assets/index";
 import { Device } from "@shared/styles/media";
 import { Colors } from "@shared/styles/Colors";
 import { Button } from "@shared/components/Button";
+import { PhoneModal } from "@shared/UI/Modals/PhoneModal";
 
 const Root = styled.div`
   padding-right: 20px;
@@ -38,7 +40,7 @@ const Content = styled.div`
 const Title = styled.h1`
   grid-column: span 4;
   color: ${Colors.black};
-  font-family: "TT Norms Pro";
+  font-family: "Roboto", sans-serif;
   font-weight: 700;
   line-height: normal;
   font-size: 28px;
@@ -52,7 +54,7 @@ const Title = styled.h1`
 const Description = styled.p`
   grid-column: span 3;
   color: ${Colors.secondary};
-  font-family: "TT Norms Pro";
+  font-family: "Roboto", sans-serif;
   font-size: 14px;
   font-style: normal;
   font-weight: 500;
@@ -83,7 +85,7 @@ const CircleBig = styled.div`
   width: 144px;
   height: 144px;
   border-radius: 50%;
-  background-color: ${Colors.circleBig};
+  background-color: ${Colors.paleOlive};
   pointer-events: none;
 
   top: 90px;
@@ -103,7 +105,7 @@ const CircleSmall = styled.div`
   width: 62px;
   height: 62px;
   border-radius: 50%;
-  background-color: ${Colors.circleSmall};
+  background-color: ${Colors.softTeal};
   pointer-events: none;
 
   top: 20px;
@@ -130,7 +132,7 @@ const Buttons = styled.div`
 const SecondBtn = styled.button`
   color: ${Colors.primary};
   text-align: center;
-  font-family: "TT Norms Pro";
+  font-family: "Roboto", sans-serif;
   font-size: 14px;
   font-style: normal;
   font-weight: 700;
@@ -154,6 +156,7 @@ const SecondBtn = styled.button`
 
 const Hero = () => {
   const isMobile = useIsMobile();
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   return (
     <Root>
@@ -174,7 +177,16 @@ const Hero = () => {
 
           <Buttons>
             <Button>Подобрать питание</Button>
-            <SecondBtn>Получить консультацию</SecondBtn>
+            <SecondBtn onClick={() => setIsModalOpen(true)}>
+              Получить консультацию
+            </SecondBtn>
+            <PhoneModal
+              title="Консультация"
+              description="Предложим подходящую программу, ответим на все ваши вопросы."
+              buttonText="Отправить"
+              isOpen={isModalOpen}
+              onClose={() => setIsModalOpen(false)}
+            />
           </Buttons>
         </div>
 

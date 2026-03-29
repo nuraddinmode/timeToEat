@@ -8,10 +8,9 @@ const Root = styled.div<{ $border: boolean }>`
   background-color: ${Colors.background};
   padding: 4px 4px;
   width: fit-content;
-  /* justify-self: center; */
 
   border: ${({ $border }) =>
-    $border ? `1px solid ${Colors.backgroundKcal}` : "none"};
+    $border ? `1px solid ${Colors.lightSand}` : "none"};
 `;
 
 const ButtonSelectContainer = ({ children, border }: any) => {

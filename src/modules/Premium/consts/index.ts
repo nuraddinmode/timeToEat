@@ -24,19 +24,39 @@ const titleContent: titleContentType[] = [
 ];
 
 const calories: caloriesType = [
-  { id: 0, heading: "900 ккал", description: "3 блюда" },
-  { id: 1, heading: "1250 ккал", description: "4 блюда" },
-  { id: 2, heading: "1600 ккал", description: "5 блюд" },
-  { id: 3, heading: "2050 ккал", description: "6 блюд" },
+  { id: 0, heading: "900 ккал", description: "3 блюда", mealsCount: 3 },
+  { id: 1, heading: "1250 ккал", description: "4 блюда", mealsCount: 4 },
+  { id: 2, heading: "1600 ккал", description: "5 блюд", mealsCount: 5 },
+  { id: 3, heading: "2050 ккал", description: "6 блюд", mealsCount: 6 },
   { id: 4, heading: "Индивидуально подобрать" },
 ];
 
 const continuity: caloriesType = [
-  { id: 0, heading: "Пробные 2 дня", description: "за 2 900 ₽" },
-  { id: 1, heading: "1 неделя", description: "1 700 ₽ в день" },
-  { id: 2, heading: "2 недели", description: "1 600 ₽ в день" },
-  { id: 3, heading: "3 недели", description: "1 520 ₽ в день" },
-  { id: 4, heading: "4 недели", description: "1 450 ₽ в день" },
+  { id: 0, heading: "Пробные 2 дня" },
+  {
+    id: 1,
+    heading: "1 неделя",
+    description: "1 700 ₽ в день",
+    daysInWeek: 7,
+  },
+  {
+    id: 2,
+    heading: "2 недели",
+    description: "1 600 ₽ в день",
+    daysInWeek: 14,
+  },
+  {
+    id: 3,
+    heading: "3 недели",
+    description: "1 520 ₽ в день",
+    daysInWeek: 21,
+  },
+  {
+    id: 4,
+    heading: "4 недели",
+    description: "1 450 ₽ в день",
+    daysInWeek: 28,
+  },
 ];
 
 const daysOfWeek: DayOfWeekProps[] = [

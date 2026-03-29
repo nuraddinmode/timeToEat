@@ -14,7 +14,7 @@ const Root = styled.div<{ width?: string }>`
   width: ${({ width }) => width || "fit-content"};
   color: ${Colors.white};
 
-  font-family: "TT Norms Pro";
+  font-family: "Roboto", sans-serif;
   font-size: 14px;
   font-style: normal;
   font-weight: 700;
@@ -34,8 +34,12 @@ const Root = styled.div<{ width?: string }>`
   }
 `;
 
-const Button = ({ children, width }: ButtonProps) => {
-  return <Root width={width}>{children}</Root>;
+const Button = ({ children, width, onClick }: ButtonProps) => {
+  return (
+    <Root onClick={onClick} width={width}>
+      {children}
+    </Root>
+  );
 };
 
 export { Button };
