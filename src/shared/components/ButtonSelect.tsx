@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { Colors } from "@shared/styles/Colors";
+import type { ReactNode } from "react";
 
 const Root = styled.div<{ $isActive?: boolean }>`
   border-radius: 100%;
@@ -13,7 +14,13 @@ const Root = styled.div<{ $isActive?: boolean }>`
     $isActive ? Colors.lightSand : "transparent"};
 `;
 
-const ButtonSelect = ({ children, isActive, onClick }: any) => {
+type Props = {
+  children: ReactNode;
+  isActive?: boolean;
+  onClick?: () => void;
+};
+
+const ButtonSelect = ({ children, isActive, onClick }: Props) => {
   return (
     <Root $isActive={isActive} onClick={onClick}>
       {children}

@@ -5,6 +5,7 @@ import { Device } from "@shared/styles/media";
 import { calories } from "../consts";
 import { continuity } from "../consts";
 import { calculatePrice } from "../model/calculatePrice";
+import { useMealPlanStore } from "../store";
 
 const SectionNaming = styled.h3`
   color: ${Colors.secondary};
@@ -35,17 +36,16 @@ const RadioWrapper = styled.div<{ $margin: number }>`
   }
 `;
 
-const MealPlanSelector = ({
-  selectedCalories,
-  setSelectedCalories,
-  selectedDuration,
-  setSelectedDuration,
-  setMealsCount,
-  setPricePerDay,
-  setTotalPrice,
-}: any) => {
-  const selectedCaloriesData = calories.find((c) => c.id === selectedCalories);
+const MealPlanSelector = () => {
+  const selectedCalories = useMealPlanStore((s) => s.selectedCalories);
+  const setSelectedCalories = useMealPlanStore((s) => s.setSelectedCalories);
+  const selectedDuration = useMealPlanStore((s) => s.selectedDuration);
+  const setSelectedDuration = useMealPlanStore((s) => s.setSelectedDuration);
+  const setMealsCount = useMealPlanStore((s) => s.setMealsCount);
+  const setPricePerDay = useMealPlanStore((s) => s.setPricePerDay);
+  const setTotalPrice = useMealPlanStore((s) => s.setTotalPrice);
 
+  const selectedCaloriesData = calories.find((c) => c.id === selectedCalories);
   const mealsCount = selectedCaloriesData?.mealsCount ?? 0;
 
   setMealsCount(mealsCount);

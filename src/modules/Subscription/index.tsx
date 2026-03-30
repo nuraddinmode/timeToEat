@@ -107,7 +107,7 @@ const Subscription = () => {
           </DescriptionContainer>
         </div>
         <FormContainer>
-          <DataInput type="text" placeholder="Укажите вашу почту"></DataInput>
+          <DataInput type="text" placeholder="Укажите вашу почту"/>
           <Button width="160px">Подписаться</Button>
         </FormContainer>
       </Wrapper>

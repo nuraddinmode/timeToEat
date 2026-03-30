@@ -11,7 +11,6 @@ import styled from "styled-components";
 import { Device } from "@shared/styles/media";
 import { Colors } from "@shared/styles/Colors";
 import { useMealPlanStore } from "./store";
-import { dishes } from "./consts";
 import { days } from "./consts";
 
 const Root = styled.div`
@@ -143,32 +142,12 @@ const NumberOfDaysTitle = styled.h3`
 const Premium = () => {
   const isMobile = useIsMobile();
 
-  const selectedCalories = useMealPlanStore((s) => s.selectedCalories);
-  const setSelectedCalories = useMealPlanStore((s) => s.setSelectedCalories);
-
-  const selectedDuration = useMealPlanStore((s) => s.selectedDuration);
-  const setSelectedDuration = useMealPlanStore((s) => s.setSelectedDuration);
-
-  const selectedDay = useMealPlanStore((s) => s.selectedDay);
-  const setSelectedDay = useMealPlanStore((s) => s.setSelectedDay);
-
   const selectedDayOfNutrition = useMealPlanStore(
     (s) => s.selectedDayOfNutrition,
   );
   const setSelectedDayOfNutrition = useMealPlanStore(
     (s) => s.setSelectedDayOfNutrition,
   );
-
-  // const mealsCount = useMealPlanStore((s) => s.mealsCount);
-  const setMealsCount = useMealPlanStore((s) => s.setMealsCount);
-
-  const pricePerDay = useMealPlanStore((s) => s.pricePerDay);
-  const setPricePerDay = useMealPlanStore((s) => s.setPricePerDay);
-
-  const totalPrice = useMealPlanStore((s) => s.totalPrice);
-  const setTotalPrice = useMealPlanStore((s) => s.setTotalPrice);
-
-  const currentDishes = dishes[selectedDay];
 
   const visibleItem = titleContent.find((item) =>
     isMobile ? item.device === "mobile" : item.device === "laptop",
@@ -187,15 +166,7 @@ const Premium = () => {
           </SubtitleWrapper>
         </HeadingWrapper>
 
-        <MealPlanSelector
-          selectedCalories={selectedCalories}
-          setSelectedCalories={setSelectedCalories}
-          selectedDuration={selectedDuration}
-          setSelectedDuration={setSelectedDuration}
-          setMealsCount={setMealsCount}
-          setPricePerDay={setPricePerDay}
-          setTotalPrice={setTotalPrice}
-        />
+        <MealPlanSelector />
 
         <NumberOfDays>
           <NumberOfDaysTitle>
@@ -219,14 +190,10 @@ const Premium = () => {
           углеводы — 120 г
         </ExtraDescription>
 
-        <DaysOfWeek selectedDay={selectedDay} setSelectedDay={setSelectedDay} />
-        <Meals currentDishes={currentDishes} />
+        <DaysOfWeek />
+        <Meals />
       </Wrapper>
-      <PremiumFooter
-        pricePerDay={pricePerDay}
-        totalPrice={totalPrice}
-        selectedCalories={selectedCalories}
-      />
+      <PremiumFooter />
     </Root>
   );
 };

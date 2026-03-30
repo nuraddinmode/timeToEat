@@ -5,7 +5,14 @@ import { dish } from "@assets/index";
 import { Device } from "@shared/styles/media";
 import { Colors } from "@shared/styles/Colors";
 import { Button } from "@shared/components/Button";
-import { PhoneModal } from "@shared/UI/Modals/PhoneModal";
+import { SharedModal } from "@shared/UI/Modals/SharedModal";
+import { DataInput } from "@shared/components/DataInput";
+import { SuccessModal } from "@shared/UI/Modals/SuccessModal";
+
+import { useForm, Controller } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { phoneSchema } from "@shared/schema";
+import { PatternFormat } from "react-number-format";
 
 const Root = styled.div`
   padding-right: 20px;
@@ -42,7 +49,6 @@ const Title = styled.h1`
   color: ${Colors.black};
   font-family: "Roboto", sans-serif;
   font-weight: 700;
-  line-height: normal;
   font-size: 28px;
 
   @media ${Device.Laptop} {
@@ -56,10 +62,7 @@ const Description = styled.p`
   color: ${Colors.secondary};
   font-family: "Roboto", sans-serif;
   font-size: 14px;
-  font-style: normal;
   font-weight: 500;
-  line-height: normal;
-
   margin-bottom: 50px;
 `;
 
@@ -77,7 +80,6 @@ const DishImage = styled.img`
   position: relative;
   z-index: 2;
   width: 100%;
-  display: block;
 `;
 
 const CircleBig = styled.div`
@@ -86,8 +88,6 @@ const CircleBig = styled.div`
   height: 144px;
   border-radius: 50%;
   background-color: ${Colors.paleOlive};
-  pointer-events: none;
-
   top: 90px;
   left: -30px;
   z-index: 1;
@@ -95,7 +95,6 @@ const CircleBig = styled.div`
   @media ${Device.Laptop} {
     width: 274px;
     height: 274px;
-
     top: 240px;
   }
 `;
@@ -106,8 +105,6 @@ const CircleSmall = styled.div`
   height: 62px;
   border-radius: 50%;
   background-color: ${Colors.softTeal};
-  pointer-events: none;
-
   top: 20px;
   right: 10px;
   z-index: 1;
@@ -115,7 +112,6 @@ const CircleSmall = styled.div`
   @media ${Device.Laptop} {
     width: 117px;
     height: 117px;
-
     top: 60px;
   }
 `;
@@ -123,40 +119,64 @@ const CircleSmall = styled.div`
 const Buttons = styled.div`
   display: flex;
   gap: 36px;
-
-  @media ${Device.Laptop} {
-    font-size: 20px;
-  }
 `;
 
 const SecondBtn = styled.button`
   color: ${Colors.primary};
-  text-align: center;
-  font-family: "Roboto", sans-serif;
-  font-size: 14px;
-  font-style: normal;
   font-weight: 700;
-  line-height: normal;
 
   &:hover {
     background-color: ${Colors.primary};
     color: ${Colors.white};
-    border: 1px solid ${Colors.primary};
     border-radius: 40px;
-  }
-
-  @media ${Device.Tablet} {
-    padding: 9px 26px;
-    border: 1px solid;
-    border-radius: 40px;
-    line-height: 30px;
-    font-size: 16px;
   }
 `;
+
+const ModalTitle = styled.h1`
+  font-family: "Roboto", sans-serif;
+  text-align: center;
+  font-size: 28px;
+  margin-bottom: 32px;
+`;
+
+const ModalDescription = styled.p`
+  font-family: "Roboto", sans-serif;
+  text-align: center;
+  margin-bottom: 30px;
+`;
+
+type FormData = {
+  phone: string;
+};
 
 const Hero = () => {
   const isMobile = useIsMobile();
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isSuccess, setIsSuccess] = useState(false);
+
+  const {
+    control,
+    handleSubmit,
+    formState: { errors },
+    reset,
+  } = useForm<FormData>({
+    resolver: zodResolver(phoneSchema),
+    defaultValues: {
+      phone: "",
+    },
+  });
+
+  const onSubmit = (data: FormData) => {
+    console.log("SEND:", data);
+
+    setIsSuccess(true);
+    reset();
+  };
+
+  const handleClose = () => {
+    setIsModalOpen(false);
+    setIsSuccess(false);
+  };
 
   return (
     <Root>
@@ -170,29 +190,65 @@ const Hero = () => {
               </Description>
             </Content>
           ) : (
-            <>
-              <Title>Доставка прогрессивного питания для гурманов</Title>
-            </>
+            <Title>Доставка прогрессивного питания для гурманов</Title>
           )}
 
           <Buttons>
             <Button>Подобрать питание</Button>
+
             <SecondBtn onClick={() => setIsModalOpen(true)}>
               Получить консультацию
             </SecondBtn>
-            <PhoneModal
-              title="Консультация"
-              description="Предложим подходящую программу, ответим на все ваши вопросы."
-              buttonText="Отправить"
-              isOpen={isModalOpen}
-              onClose={() => setIsModalOpen(false)}
-            />
+
+            <SharedModal isOpen={isModalOpen} onClose={handleClose}>
+              {isSuccess ? (
+                <SuccessModal onClose={handleClose} />
+              ) : (
+                <>
+                  <ModalTitle>Консультация</ModalTitle>
+
+                  <ModalDescription>
+                    Предложим подходящую программу, ответим на все ваши вопросы.
+                  </ModalDescription>
+
+                  <form onSubmit={handleSubmit(onSubmit)}>
+                    <Controller
+                      name="phone"
+                      control={control}
+                      render={({ field }) => (
+                        <PatternFormat
+                          value={field.value}
+                          onValueChange={(values) =>
+                            field.onChange(values.value)
+                          }
+                          customInput={DataInput}
+                          format="+7 (###) ### ##-##"
+                          mask="_"
+                          placeholder="Телефон"
+                          marginBottom="30px"
+                        />
+                      )}
+                    />
+
+                    {errors.phone && (
+                      <p style={{ color: "red", marginBottom: "10px" }}>
+                        {errors.phone.message}
+                      </p>
+                    )}
+
+                    <Button width="307px" type="submit">
+                      Отправить
+                    </Button>
+                  </form>
+                </>
+              )}
+            </SharedModal>
           </Buttons>
         </div>
 
         <HeroMedia>
-          <CircleBig></CircleBig>
-          <CircleSmall></CircleSmall>
+          <CircleBig />
+          <CircleSmall />
           <DishImage src={dish} alt="Блюдо" />
         </HeroMedia>
       </Wrapper>

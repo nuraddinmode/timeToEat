@@ -1,12 +1,6 @@
-import type { ReactNode } from "react";
+
 
 type Device = "mobile" | "laptop";
-
-type ButtonProps = {
-  children: ReactNode;
-  width?: string;
-  onClick?: () => void;
-};
 
 type SmallRadioProps = {
   isActive: boolean;
@@ -14,4 +8,4 @@ type SmallRadioProps = {
   onClick?: () => void;
 };
 
-export type { Device, ButtonProps, SmallRadioProps };
+export type { Device, SmallRadioProps };

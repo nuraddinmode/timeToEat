@@ -2,6 +2,8 @@ import styled from "styled-components";
 import { Device } from "@shared/styles/media";
 import { Colors } from "@shared/styles/Colors";
 import type { MealTime } from "../types";
+import { useMealPlanStore } from "../store";
+import { dishes } from "../consts";
 
 const Root = styled.div`
   display: flex;
@@ -59,7 +61,9 @@ const MealDescription = styled.p`
   }
 `;
 
-const Meals = ({ currentDishes }) => {
+const Meals = () => {
+  const selectedDay = useMealPlanStore((s) => s.selectedDay);
+  const currentDishes = dishes[selectedDay];
   return (
     <Root>
       {currentDishes.map(

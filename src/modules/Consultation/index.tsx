@@ -4,6 +4,14 @@ import styled from "styled-components";
 import { Button } from "@shared/components/Button";
 import { woman } from "@assets/index";
 import { DataInput } from "@shared/components/DataInput";
+import { SuccessModal } from "@shared/UI/Modals/SuccessModal";
+import { useState } from "react";
+
+import { useForm, Controller } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { nameAndPhoneSchema } from "@shared/schema";
+import { PatternFormat } from "react-number-format";
+import { cleanName, normalizeName } from "@shared/helpers/cleanName";
 
 const Root = styled.div`
   padding-right: 20px;
@@ -29,11 +37,7 @@ const Container = styled.div`
 const Title = styled.h1`
   color: ${Colors.white};
   text-align: center;
-  font-family: "Roboto", sans-serif;
   font-size: 24px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: normal;
   margin-bottom: 30px;
   max-width: 335px;
 
@@ -48,13 +52,27 @@ const Title = styled.h1`
 const InputsWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 30px;
+  gap: 20px;
   margin-bottom: 30px;
   align-items: center;
 
   @media ${Device.Laptop} {
     flex-direction: row;
   }
+`;
+
+const Field = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+`;
+
+const ErrorText = styled.p`
+  position: absolute;
+  bottom: -18px;
+  font-size: 12px;
+  color: white;
 `;
 
 const ButtonWrapper = styled.div`
@@ -96,29 +114,108 @@ const WomanImg = styled.img`
   @media ${Device.Laptop} {
     width: auto;
     height: auto;
-
     right: 140px;
     transform: translate(0, 0);
   }
 `;
 
+type FormData = {
+  name: string;
+  phone: string;
+};
+
 const Consultation = () => {
+  const [isSuccess, setIsSuccess] = useState(false);
+
+  const {
+    control,
+    handleSubmit,
+    formState: { errors },
+    reset,
+  } = useForm<FormData>({
+    resolver: zodResolver(nameAndPhoneSchema),
+    defaultValues: {
+      name: "",
+      phone: "",
+    },
+  });
+
+  const onSubmit = (data: FormData) => {
+    console.log("CONSULTATION:", data);
+
+    setIsSuccess(true);
+    reset();
+  };
+
   return (
     <Root>
       <Container>
         <Wrapper>
           <Content>
             <Title>Бесплатная консультация диетолога</Title>
-            <form action="">
-              <InputsWrapper>
-                <DataInput type="text" placeholder="Ваше имя" />
-                <DataInput type="text" placeholder="Телефон" />
-              </InputsWrapper>
-              <ButtonWrapper>
-                <Button width="308px">Отправить заявку</Button>
-              </ButtonWrapper>
-            </form>
+
+            {isSuccess ? (
+              <SuccessModal onClose={() => setIsSuccess(false)} />
+            ) : (
+              <form onSubmit={handleSubmit(onSubmit)}>
+                <InputsWrapper>
+                  <Field>
+                    <Controller
+                      name="name"
+                      control={control}
+                      render={({ field }) => (
+                        <DataInput
+                          value={field.value || ""}
+                          type="text"
+                          placeholder="Ваше имя"
+                          onChange={(e) => {
+                            const cleaned = cleanName(e.target.value);
+                            const normalized = normalizeName(cleaned);
+
+                            field.onChange(normalized);
+                          }}
+                        />
+                      )}
+                    />
+
+                    {errors.name && (
+                      <ErrorText>{errors.name.message}</ErrorText>
+                    )}
+                  </Field>
+
+                  <Field>
+                    <Controller
+                      name="phone"
+                      control={control}
+                      render={({ field }) => (
+                        <PatternFormat
+                          value={field.value}
+                          onValueChange={(values) =>
+                            field.onChange(values.value)
+                          }
+                          customInput={DataInput}
+                          format="+7 (###) ### ##-##"
+                          mask="_"
+                          placeholder="Телефон"
+                        />
+                      )}
+                    />
+
+                    {errors.phone && (
+                      <ErrorText>{errors.phone.message}</ErrorText>
+                    )}
+                  </Field>
+                </InputsWrapper>
+
+                <ButtonWrapper>
+                  <Button width="308px" type="submit">
+                    Отправить заявку
+                  </Button>
+                </ButtonWrapper>
+              </form>
+            )}
           </Content>
+
           <WomanImg src={woman} alt="woman" />
         </Wrapper>
       </Container>

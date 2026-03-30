@@ -6,7 +6,14 @@ import { Colors } from "@shared/styles/Colors";
 import { Device } from "@shared/styles/media";
 import styled from "styled-components";
 import { useState } from "react";
-import { PhoneModal } from "@shared/UI/Modals/PhoneModal";
+import { SharedModal } from "@shared/UI/Modals/SharedModal";
+import { DataInput } from "@shared/components/DataInput";
+import { SuccessModal } from "@shared/UI/Modals/SuccessModal";
+
+import { useForm, Controller } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { phoneSchema } from "@shared/schema";
+import { PatternFormat } from "react-number-format";
 
 const Root = styled.div`
   @media ${Device.Tablet} {
@@ -161,26 +168,82 @@ const ContentWrapper = styled.div`
   }
 `;
 
+const ModalTitle = styled.h1`
+  color: ${Colors.black};
+  text-align: center;
+  font-family: "Roboto", sans-serif;
+  font-size: 28px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  margin-bottom: 32px;
+`;
+
+const ModalDescription = styled.p`
+  color: ${Colors.secondary};
+  text-align: center;
+  font-family: "TT Norms Pro";
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+
+  margin-bottom: 30px;
+`;
+
+type FormData = {
+  phone: string;
+};
+
 const Delivery = () => {
   const isMobile = useIsMobile();
+
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isSuccess, setIsSuccess] = useState(false);
+
+  const {
+    control,
+    handleSubmit,
+    formState: { errors },
+    reset,
+  } = useForm<FormData>({
+    resolver: zodResolver(phoneSchema),
+    defaultValues: {
+      phone: "",
+    },
+  });
+
+  const onSubmit = (data: FormData) => {
+    console.log("CALL REQUEST:", data);
+
+    setIsSuccess(true); // 👉 показываем success
+    reset();
+  };
+
+  const handleClose = () => {
+    setIsModalOpen(false);
+    setIsSuccess(false);
+  };
 
   return (
     <Root>
       <Wrapper>
         <Title>Карта доставки</Title>
+
         <DescWrapper>
           <Description>
             Доставка осуществляется каждый день с 06:00 до 12:00.
           </Description>
           <Description>Выбор интервала — 2 часа.</Description>
         </DescWrapper>
+
         <MainContent>
           <iframe
             src="https://yandex.ru/map-widget/v1/?um=constructor%3Af16d0a0eaa7cd4d51a223fa5149a5953ecc6908407cb4ce2d23b82e239f4538e&amp;source=constructor"
             width={isMobile ? "345" : "982"}
             height={isMobile ? "300" : "580"}
-          ></iframe>
+          />
+
           <ContentWrapper>
             <Buttons>
               {content.map((item) => (
@@ -189,23 +252,63 @@ const Delivery = () => {
                 </ColoredBtn>
               ))}
             </Buttons>
+
             <ExtraDescription>
               Уточните стоимость и время доставки
             </ExtraDescription>
+
             <Contacts>
               <Number>+7 988 500-1-700</Number>
               <Time>c 09:00 до 21:00</Time>
             </Contacts>
+
             <Button onClick={() => setIsModalOpen(true)} width="307px">
               Перезвоните мне
             </Button>
-            <PhoneModal
-              title="Заказ обратного звонка"
-              description="Введи номер телефона, на который необходимо перезвонить"
-              buttonText="Перезвоните мне"
-              isOpen={isModalOpen}
-              onClose={() => setIsModalOpen(false)}
-            />
+
+            <SharedModal isOpen={isModalOpen} onClose={handleClose}>
+              {isSuccess ? (
+                <SuccessModal onClose={handleClose} />
+              ) : (
+                <>
+                  <ModalTitle>Заказ обратного звонка</ModalTitle>
+
+                  <ModalDescription>
+                    Введи номер телефона, на который необходимо перезвонить
+                  </ModalDescription>
+
+                  <form onSubmit={handleSubmit(onSubmit)}>
+                    <Controller
+                      name="phone"
+                      control={control}
+                      render={({ field }) => (
+                        <PatternFormat
+                          value={field.value}
+                          onValueChange={(values) =>
+                            field.onChange(values.value)
+                          }
+                          customInput={DataInput}
+                          format="+7 (###) ### ##-##"
+                          mask="_"
+                          placeholder="Телефон"
+                          marginBottom="30px"
+                        />
+                      )}
+                    />
+
+                    {errors.phone && (
+                      <p style={{ color: "red", marginBottom: "10px" }}>
+                        {errors.phone.message}
+                      </p>
+                    )}
+
+                    <Button width="307px" type="submit">
+                      Перезвоните мне
+                    </Button>
+                  </form>
+                </>
+              )}
+            </SharedModal>
           </ContentWrapper>
         </MainContent>
       </Wrapper>

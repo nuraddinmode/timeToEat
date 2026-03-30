@@ -16,11 +16,29 @@ const Root = styled.input<{ $marginBottom?: string }>`
   }
 `;
 
-const DataInput = ({ children, type, placeholder, marginBottom }: any) => {
+type Props = {
+  type: string;
+  placeholder: string;
+  marginBottom?: string;
+  value?: string;
+  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
+};
+
+const DataInput = ({
+  value,
+  onChange,
+  type,
+  placeholder,
+  marginBottom,
+}: Props) => {
   return (
-    <Root $marginBottom={marginBottom} type={type} placeholder={placeholder}>
-      {children}
-    </Root>
+    <Root
+      value={value}
+      onChange={onChange}
+      $marginBottom={marginBottom}
+      type={type}
+      placeholder={placeholder}
+    />
   );
 };
 
