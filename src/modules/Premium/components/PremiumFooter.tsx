@@ -15,9 +15,10 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { tripleSchema } from "@shared/schema";
 import { PatternFormat } from "react-number-format";
 import { cleanName, normalizeName } from "@shared/helpers/cleanName";
+import { Font } from "@shared/fonts";
 
 const Root = styled.div`
-  background-color: ${Colors.sageGreen};
+  background-color: ${Colors.background.secondary};
   display: flex;
   flex-direction: column;
   padding: 20px;
@@ -45,14 +46,9 @@ const Left = styled.div`
   }
 `;
 
-const FooterDescription = styled.p`
-  font-family: "Roboto", sans-serif;
+const FooterDescription = styled.h5`
   color: ${Colors.white};
-  font-size: 14px;
-
-  @media ${Device.Laptop} {
-    font-size: 16px;
-  }
+  ${Font.Text.H5}
 `;
 
 const Right = styled.div`
@@ -66,40 +62,35 @@ const Right = styled.div`
   }
 `;
 
-const FooterSubtitle = styled.h2`
-  font-family: "Roboto", sans-serif;
+const FooterSubtitle = styled.h3`
+  ${Font.Text.H3}
   color: ${Colors.white};
-  font-size: 20px;
   text-align: center;
 
   @media ${Device.Laptop} {
     text-align: start;
-    font-size: 24px;
   }
 `;
 
-const DescriptionTwo = styled.p`
-  font-family: "Roboto", sans-serif;
+const DescriptionTwo = styled.h5`
+  ${Font.Text.H5}
   color: ${Colors.white};
-  font-size: 14px;
   text-align: center;
   max-width: 335px;
 
   @media ${Device.Laptop} {
-    font-size: 16px;
     text-align: start;
   }
 `;
 
-const ModalTitle = styled.h1`
-  font-family: "Roboto", sans-serif;
+const ModalTitle = styled.h2`
   text-align: center;
-  font-size: 28px;
-  margin-bottom: 32px;
+  ${Font.Text.H3}
+  margin-bottom: 20px;
 `;
 
-const ModalDescription = styled.p`
-  font-family: "Roboto", sans-serif;
+const ModalDescription = styled.h5`
+  ${Font.Text.H5}
   text-align: center;
   margin-bottom: 30px;
 `;
@@ -150,7 +141,7 @@ const PremiumFooter = () => {
 
     console.log("ORDER:", finalData);
 
-    setIsSuccess(true); // 👉 показываем success
+    setIsSuccess(true);
     reset();
   };
 
@@ -179,7 +170,6 @@ const PremiumFooter = () => {
               </ModalDescription>
 
               <form onSubmit={handleSubmit(onSubmit)}>
-                {/* NAME */}
                 <Controller
                   name="name"
                   control={control}
@@ -204,7 +194,6 @@ const PremiumFooter = () => {
                   </p>
                 )}
 
-                {/* ADDRESS */}
                 <Controller
                   name="address"
                   control={control}
@@ -223,7 +212,6 @@ const PremiumFooter = () => {
                   </p>
                 )}
 
-                {/* PHONE */}
                 <Controller
                   name="phone"
                   control={control}

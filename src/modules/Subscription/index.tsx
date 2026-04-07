@@ -4,10 +4,18 @@ import { DataInput } from "@shared/components/DataInput";
 import Email from "@assets/icons/email.svg?component";
 import { Colors } from "@shared/styles/Colors";
 import { Button } from "@shared/components/Button";
+import { SubscriptionSuccessModal } from "@shared/UI/Modals/SubscriptionSuccessModal";
+
+import { useState } from "react";
+import { useForm, Controller } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { emailSchema } from "@shared/schema";
+import { Font } from "@shared/fonts";
 
 const Root = styled.div`
   padding-right: 20px;
   padding-left: 20px;
+  margin-bottom: 30px;
 
   @media ${Device.Tablet} {
     gap: 40px;
@@ -21,7 +29,7 @@ const Root = styled.div`
 
 const Wrapper = styled.div`
   padding: 30px;
-  background-color: ${Colors.dustyRose};
+  background-color: ${Colors.background.subscription};
   border-radius: 30px;
 
   @media ${Device.Laptop} {
@@ -34,15 +42,10 @@ const Wrapper = styled.div`
 const Title = styled.h2`
   color: ${Colors.white};
   text-align: center;
-  font-family: "Roboto", sans-serif;
-  font-size: 24px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: normal;
+  ${Font.Text.H2}
   margin-bottom: 15px;
 
   @media ${Device.Laptop} {
-    font-size: 48px;
     text-align: start;
   }
 `;
@@ -62,18 +65,13 @@ const DescriptionContainer = styled.div`
   }
 `;
 
-const Description = styled.p`
+const Description = styled.h5`
   color: ${Colors.white};
-  font-family: "Roboto", sans-serif;
-  font-size: 14px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: normal;
+  ${Font.Text.H5}
   max-width: 295px;
   text-align: center;
 
   @media ${Device.Laptop} {
-    font-size: 16px;
     max-width: fit-content;
     text-align: start;
   }
@@ -92,12 +90,52 @@ const FormContainer = styled.div`
   }
 `;
 
+const Field = styled.div`
+  position: relative;
+  display: flex;
+  flex-direction: column;
+`;
+
+const ErrorText = styled.p`
+  ${Font.Text.P}
+  position: absolute;
+  bottom: -18px;
+  left: 0;
+  color: white;
+`;
+
+type FormData = {
+  email: string;
+};
+
 const Subscription = () => {
+  const [isSuccess, setIsSuccess] = useState(false);
+
+  const {
+    control,
+    handleSubmit,
+    formState: { errors },
+    reset,
+  } = useForm<FormData>({
+    resolver: zodResolver(emailSchema),
+    defaultValues: {
+      email: "",
+    },
+  });
+
+  const onSubmit = (data: FormData) => {
+    console.log("SUBSCRIBE:", data);
+
+    setIsSuccess(true);
+    reset();
+  };
+
   return (
     <Root>
       <Wrapper>
         <div>
           <Title>Будьте всегда в курсе!</Title>
+
           <DescriptionContainer>
             <Email />
             <Description>
@@ -106,11 +144,37 @@ const Subscription = () => {
             </Description>
           </DescriptionContainer>
         </div>
-        <FormContainer>
-          <DataInput type="text" placeholder="Укажите вашу почту"/>
-          <Button width="160px">Подписаться</Button>
-        </FormContainer>
+
+        <form onSubmit={handleSubmit(onSubmit)}>
+          <FormContainer>
+            <div style={{ display: "flex", flexDirection: "column" }}>
+              <Field>
+                <Controller
+                  name="email"
+                  control={control}
+                  render={({ field }) => (
+                    <DataInput
+                      {...field}
+                      type="text"
+                      placeholder="Укажите вашу почту"
+                    />
+                  )}
+                />
+
+                {errors.email && <ErrorText>{errors.email.message}</ErrorText>}
+              </Field>
+            </div>
+
+            <Button width="160px" type="submit">
+              Подписаться
+            </Button>
+          </FormContainer>
+        </form>
       </Wrapper>
+
+      {isSuccess && (
+        <SubscriptionSuccessModal onClose={() => setIsSuccess(false)} />
+      )}
     </Root>
   );
 };

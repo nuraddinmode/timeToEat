@@ -3,6 +3,7 @@ import Like from "@assets/icons/hands.svg?component";
 import Frame from "@assets/icons/frame.svg?component";
 import { Device } from "@shared/styles/media";
 import { Colors } from "@shared/styles/Colors";
+import { Font } from "@shared/fonts";
 
 const Root = styled.div`
   padding-right: 20px;
@@ -46,14 +47,7 @@ const Card = styled.div<{ $isReverse?: boolean }>`
 const Subtitle = styled.h2`
   color: ${Colors.black};
   text-align: center;
-  font-family: "Roboto", sans-serif;
-  font-size: 24px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: normal;
-  @media ${Device.Laptop} {
-    font-size: 48px;
-  }
+  ${Font.Text.H2}
 `;
 
 const Texts = styled.div`
@@ -74,17 +68,9 @@ const Descriptions = styled.div`
   gap: 15px;
 `;
 
-const Description = styled.p`
+const Description = styled.h4`
   color: ${Colors.secondary};
-  font-family: "Roboto", sans-serif;
-  font-size: 14px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: normal;
-
-  @media ${Device.Laptop} {
-    font-size: 20px;
-  }
+  ${Font.Text.H4}
 `;
 
 const Offers = () => {

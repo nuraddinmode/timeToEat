@@ -1,5 +1,4 @@
 type DeviceType = "Laptop" | "Tablet" | "Mobile";
-
 type SizeType = "Large" | "Medium" | "Small";
 
 const DeviceSize: Record<SizeType, string> = {

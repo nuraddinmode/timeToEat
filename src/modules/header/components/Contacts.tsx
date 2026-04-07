@@ -10,6 +10,7 @@ import { useForm, Controller } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { phoneSchema } from "@shared/schema";
 import { PatternFormat } from "react-number-format";
+import { Font } from "@shared/fonts";
 
 const Root = styled.div`
   display: flex;
@@ -18,55 +19,34 @@ const Root = styled.div`
 `;
 
 const Anchor = styled.button`
-  color: #4d8f76;
-  font-family: "Roboto", sans-serif;
-  font-size: 14px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: normal;
+  color: ${Colors.primary};
+  ${Font.Text.H6}
+  text-decoration-line: underline;
   cursor: pointer;
 `;
 
 const Number = styled.a`
   color: ${Colors.secondary};
   text-align: right;
-  font-family: "Roboto", sans-serif;
-  font-size: 24px;
-  font-style: normal;
-  font-weight: 700;
-  line-height: normal;
+  ${Font.Text.H3}
 `;
 
 const Time = styled.p`
-  color: ${Colors.mutedGray};
+  color: ${Colors.text.comment};
   text-align: right;
-  font-family: "Roboto", sans-serif;
-  font-size: 12px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: normal;
+  ${Font.Text.P}
 `;
 
-const ModalTitle = styled.h1`
+const ModalTitle = styled.h2`
   color: ${Colors.black};
-  text-align: center;
-  font-family: "Roboto", sans-serif;
-  font-size: 28px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: normal;
+  ${Font.Text.H3}
   margin-bottom: 32px;
 `;
 
-const ModalDescription = styled.p`
+const ModalDescription = styled.h5`
   color: ${Colors.secondary};
+  ${Font.Text.H5}
   text-align: center;
-  font-family: "TT Norms Pro";
-  font-size: 16px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: normal;
-
   margin-bottom: 30px;
 `;
 
@@ -101,13 +81,13 @@ const Contacts = () => {
 
   const handleClose = () => {
     setIsModalOpen(false);
-    setIsSuccess(false); // сбрасываем состояние
+    setIsSuccess(false);
   };
 
   return (
     <Root>
       <Anchor onClick={() => setIsModalOpen(true)}>Перезвоните мне</Anchor>
-      <Number href="tel:+7 988 500-1-700">+7 988 500-1-700</Number>
+      <Number href="tel:+7 988 500-17-00">+7 988 500-17-00</Number>
       <Time>c 09:00 до 21:00</Time>
       <SharedModal isOpen={isModalOpen} onClose={handleClose}>
         {isSuccess ? (

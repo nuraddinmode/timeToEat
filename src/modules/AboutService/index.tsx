@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { cards } from "./consts";
 import { useIsMobile } from "@shared/hooks/useIsMobile";
 import { Colors } from "@shared/styles/Colors";
+import { Font } from "@shared/fonts";
 
 const Root = styled.div`
   padding-right: 20px;
@@ -45,16 +46,11 @@ const Card = styled.div`
 const Title = styled.h2`
   color: ${Colors.black};
   text-align: center;
-  font-family: "Roboto", sans-serif;
-  font-size: 24px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: normal;
+  ${Font.Text.H2}
   margin-bottom: 30px;
 
   @media ${Device.Laptop} {
     text-align: start;
-    font-size: 48px;
     margin-bottom: 50px;
   }
 `;
@@ -63,15 +59,10 @@ const Subtitle = styled.h2`
   color: ${Colors.secondary};
   max-width: 335px;
   text-align: center;
-  font-family: "Roboto", sans-serif;
-  font-size: 20px;
-  font-style: normal;
-  font-weight: 700;
-  line-height: normal;
+  ${Font.Text.H3}
   margin-bottom: 10px;
 
   @media ${Device.Laptop} {
-    font-size: 24px;
     max-width: 420px;
     margin-bottom: 20px;
     text-align: start;
@@ -81,14 +72,9 @@ const Paragraph = styled.p`
   color: ${Colors.secondary};
   max-width: 335px;
   text-align: center;
-  font-family: "Roboto", sans-serif;
-  font-size: 14px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: normal;
+  ${Font.Text.H5}
 
   @media ${Device.Laptop} {
-    font-size: 16px;
     max-width: 380px;
     text-align: start;
   }
@@ -106,7 +92,7 @@ const AboutService = () => {
   const isMobile = useIsMobile();
 
   return (
-    <Root>
+    <Root id="aboutUs">
       <Title>О нашем сервисе</Title>
       <Cards>
         {cards.map(({ Icon, laptop, mobile, id }) => (

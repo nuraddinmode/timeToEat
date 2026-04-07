@@ -12,6 +12,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { tripleSchema } from "@shared/schema";
 import { PatternFormat } from "react-number-format";
 import { cleanName, normalizeName } from "@shared/helpers/cleanName";
+import { Font } from "@shared/fonts";
 
 const Root = styled.div`
   padding-right: 20px;
@@ -38,14 +39,13 @@ const Wrapper = styled.div`
   }
 `;
 
-const Title = styled.h1`
+const Title = styled.h2`
   color: ${Colors.black};
+  ${Font.Text.H2}
   text-align: center;
-  font-size: 24px;
   margin-bottom: 20px;
 
   @media ${Device.Laptop} {
-    font-size: 48px;
     text-align: start;
     margin-bottom: 50px;
   }
@@ -60,22 +60,19 @@ const DescriptionWrapper = styled.div`
   }
 `;
 
-const Description = styled.p`
+const Description = styled.h5`
   color: ${Colors.secondary};
-  font-size: 18px;
-
-  @media ${Device.Laptop} {
-    font-size: 16px;
-  }
+  ${Font.Text.H5}
 `;
 
-const ModalTitle = styled.h1`
+const ModalTitle = styled.h3`
   text-align: center;
-  font-size: 28px;
+  ${Font.Text.H3}
   margin-bottom: 32px;
 `;
 
-const ModalDescription = styled.p`
+const ModalDescription = styled.h5`
+  ${Font.Text.H5}
   text-align: center;
   margin-bottom: 30px;
 `;
@@ -87,7 +84,7 @@ const Field = styled.div`
 
 const ErrorText = styled.p`
   color: red;
-  font-size: 12px;
+  ${Font.Text.P}
   margin-top: 6px;
 `;
 
@@ -118,7 +115,7 @@ const Trial = () => {
   const onSubmit = (formData: FormData) => {
     console.log("TRIAL:", formData);
 
-    setIsSuccess(true); // 👉 показываем success
+    setIsSuccess(true);
     reset();
   };
 
@@ -159,7 +156,6 @@ const Trial = () => {
               </ModalDescription>
 
               <form onSubmit={handleSubmit(onSubmit)}>
-                {/* NAME */}
                 <Field>
                   <Controller
                     name="name"
@@ -182,7 +178,6 @@ const Trial = () => {
                   {errors.name && <ErrorText>{errors.name.message}</ErrorText>}
                 </Field>
 
-                {/* ADDRESS */}
                 <Field>
                   <Controller
                     name="address"
@@ -201,7 +196,6 @@ const Trial = () => {
                   )}
                 </Field>
 
-                {/* PHONE */}
                 <Field>
                   <Controller
                     name="phone"

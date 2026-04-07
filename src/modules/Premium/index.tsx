@@ -12,6 +12,7 @@ import { Device } from "@shared/styles/media";
 import { Colors } from "@shared/styles/Colors";
 import { useMealPlanStore } from "./store";
 import { days } from "./consts";
+import { Font } from "@shared/fonts";
 
 const Root = styled.div`
   @media ${Device.Tablet} {
@@ -50,17 +51,9 @@ const HeadingWrapper = styled.div`
 
 const Title = styled.h1`
   color: ${Colors.black};
-  font-family: "Roboto", sans-serif;
-  font-size: 24px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: normal;
+  ${Font.Text.H1}
   display: flex;
   align-items: start;
-
-  @media ${Device.Laptop} {
-    font-size: 48px;
-  }
 `;
 
 const SubtitleWrapper = styled.div`
@@ -76,41 +69,25 @@ const SubtitleWrapper = styled.div`
 const Subtitle = styled.h3`
   color: ${Colors.primary};
   font-family: "Roboto", sans-serif;
-  font-size: 14px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: normal;
-
-  @media ${Device.Laptop} {
-    font-size: 16px;
-  }
+  ${Font.Text.H5}
 `;
 
 const ExtraHeading = styled.h2`
   color: ${Colors.black};
-  font-family: "Roboto", sans-serif;
-  font-size: 18px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: normal;
+  ${Font.Text.H4}
   text-align: center;
   margin-bottom: 10px;
 
   @media ${Device.Laptop} {
-    font-size: 20px;
     text-align: start;
     margin-bottom: 20px;
   }
 `;
 
 const ExtraDescription = styled.p`
-  color: ${Colors.warmBeige};
+  color: ${Colors.extra.primary};
   text-align: center;
-  font-family: "Roboto", sans-serif;
-  font-size: 14px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: normal;
+  ${Font.Text.H6}
   margin-bottom: 20px;
 
   @media ${Device.Laptop} {
@@ -132,11 +109,7 @@ const NumberOfDays = styled.div`
 const NumberOfDaysTitle = styled.h3`
   max-width: 209px;
   color: ${Colors.secondary};
-  font-family: "Roboto", sans-serif;
-  font-size: 14px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: normal;
+  ${Font.Text.H6}
 `;
 
 const Premium = () => {
@@ -156,7 +129,7 @@ const Premium = () => {
   if (!visibleItem) return null;
 
   return (
-    <Root>
+    <Root id="premium">
       <Wrapper>
         <HeadingWrapper>
           <Title>{visibleItem.title}</Title>

@@ -4,7 +4,7 @@ import { Device } from "@shared/styles/media";
 
 const Root = styled.input<{ $marginBottom?: string }>`
   border-radius: 40px;
-  background: ${Colors.background};
+  background: ${Colors.background.primary};
   width: 308px;
   padding: 15px 13px;
 

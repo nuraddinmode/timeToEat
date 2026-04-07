@@ -12,6 +12,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { nameAndPhoneSchema } from "@shared/schema";
 import { PatternFormat } from "react-number-format";
 import { cleanName, normalizeName } from "@shared/helpers/cleanName";
+import { Font } from "@shared/fonts";
 
 const Root = styled.div`
   padding-right: 20px;
@@ -29,20 +30,19 @@ const Root = styled.div`
 
 const Container = styled.div`
   padding: 30px;
-  background: ${Colors.sageGreen};
+  background: ${Colors.background.secondary};
   border-radius: 30px;
   position: relative;
 `;
 
 const Title = styled.h1`
   color: ${Colors.white};
+  ${Font.Text.H2}
   text-align: center;
-  font-size: 24px;
   margin-bottom: 30px;
   max-width: 335px;
 
   @media ${Device.Laptop} {
-    font-size: 48px;
     max-width: 600px;
     text-align: start;
     margin-bottom: 50px;
@@ -71,7 +71,7 @@ const Field = styled.div`
 const ErrorText = styled.p`
   position: absolute;
   bottom: -18px;
-  font-size: 12px;
+  ${Font.Text.P}
   color: white;
 `;
 
@@ -148,7 +148,7 @@ const Consultation = () => {
   };
 
   return (
-    <Root>
+    <Root id="consultation">
       <Container>
         <Wrapper>
           <Content>

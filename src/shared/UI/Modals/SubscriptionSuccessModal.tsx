@@ -19,10 +19,10 @@ const Modal = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background: ${Colors.white};
-  border-radius: 30px;
   max-width: 350px;
   padding: 30px 45px;
+  border-radius: 30px;
+  background: ${Colors.white};
 
   @media ${Device.Laptop} {
     max-width: 450px;
@@ -37,12 +37,12 @@ const Description = styled.p`
   margin-bottom: 40px;
 `;
 
-const SuccessModal = ({ onClose }: { onClose: () => void }) => {
+const SubscriptionSuccessModal = ({ onClose }: { onClose: () => void }) => {
   return (
     <Root>
       <Modal>
         <SuccessIcon />
-        <Description>Спасибо, ваш запрос отправлен</Description>
+        <Description>Спасибо, ваша подписка оформлена</Description>
         <Button width="307px" onClick={onClose}>
           Закрыть
         </Button>
@@ -51,4 +51,4 @@ const SuccessModal = ({ onClose }: { onClose: () => void }) => {
   );
 };
 
-export { SuccessModal };
+export { SubscriptionSuccessModal };

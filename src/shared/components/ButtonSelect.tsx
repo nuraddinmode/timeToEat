@@ -7,11 +7,11 @@ const Root = styled.div<{ $isActive?: boolean }>`
   padding: 9px 11px;
 
   &:hover {
-    background-color: ${Colors.lightSand};
+    background-color: ${Colors.background.buttons};
   }
 
   background-color: ${({ $isActive }) =>
-    $isActive ? Colors.lightSand : "transparent"};
+    $isActive ? Colors.background.buttons : "transparent"};
 `;
 
 type Props = {

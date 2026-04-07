@@ -6,10 +6,12 @@ import styled from "styled-components";
 import { Device } from "@shared/styles/media";
 import Arrow from "@assets/icons/arrowVector.svg?component";
 import { Colors } from "@shared/styles/Colors";
+import { Font } from "@shared/fonts";
 
 const Root = styled.div`
   padding-right: 20px;
   padding-left: 20px;
+  margin-bottom: 30px;
 
   @media ${Device.Tablet} {
     gap: 40px;
@@ -32,15 +34,12 @@ const Chapters = styled.div`
   }
 `;
 
-const Title = styled.h1`
+const Title = styled.h2`
   color: ${Colors.black};
-  font-family: "Roboto", sans-serif;
-  font-size: 24px;
-  font-weight: 500;
+  ${Font.Text.H2}
   margin-bottom: 20px;
 
   @media ${Device.Laptop} {
-    font-size: 48px;
     margin-bottom: 32px;
   }
 `;
@@ -71,14 +70,8 @@ const QuestionHeader = styled.div`
 
 const QuestionTitle = styled.h3`
   color: ${Colors.secondary};
-  font-family: "Roboto", sans-serif;
-  font-size: 18px;
-  font-weight: 700;
+  ${Font.Text.H3}
   user-select: none;
-
-  @media ${Device.Laptop} {
-    font-size: 24px;
-  }
 `;
 
 const AnswerWrapper = styled.div<{ $open: boolean }>`
@@ -125,7 +118,7 @@ const Questions = () => {
   };
 
   return (
-    <Root>
+    <Root id="questions">
       <Title>Частые вопросы</Title>
 
       <Chapters>

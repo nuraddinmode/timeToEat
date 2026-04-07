@@ -14,6 +14,7 @@ import { useForm, Controller } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { phoneSchema } from "@shared/schema";
 import { PatternFormat } from "react-number-format";
+import { Font } from "@shared/fonts";
 
 const Root = styled.div`
   @media ${Device.Tablet} {
@@ -26,7 +27,7 @@ const Root = styled.div`
 `;
 
 const Wrapper = styled.div`
-  background-color: ${Colors.cream};
+  background-color: ${Colors.background.delivery};
   margin-bottom: 30px;
   padding: 30px;
 
@@ -66,20 +67,15 @@ const DescWrapper = styled.div`
   }
 `;
 
-const Description = styled.p`
+const Description = styled.h3`
   max-width: 335px;
   color: ${Colors.secondary};
   text-align: center;
-  font-family: "Roboto", sans-serif;
-  font-size: 14px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: normal;
+  ${Font.Text.H3}
 
   @media ${Device.Laptop} {
     text-align: start;
     max-width: 1000px;
-    font-size: 24px;
   }
 `;
 
@@ -109,19 +105,14 @@ const Buttons = styled.div`
   }
 `;
 
-const ExtraDescription = styled.p`
+const ExtraDescription = styled.h5`
   color: ${Colors.secondary};
   text-align: center;
-  font-family: "Roboto", sans-serif;
-  font-size: 14px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: normal;
+  ${Font.Text.H5}
   margin-bottom: 20px;
 
   @media ${Device.Laptop} {
     text-align: start;
-    font-size: 16px;
     margin-bottom: 30px;
   }
 `;
@@ -129,11 +120,7 @@ const ExtraDescription = styled.p`
 const Number = styled.p`
   color: ${Colors.secondary};
   text-align: center;
-  font-family: "Roboto", sans-serif;
-  font-size: 24px;
-  font-style: normal;
-  font-weight: 700;
-  line-height: normal;
+  ${Font.Text.H3}
 
   @media ${Device.Laptop} {
     text-align: start;
@@ -141,12 +128,8 @@ const Number = styled.p`
 `;
 
 const Time = styled.p`
-  color: ${Colors.mutedGray};
-  font-family: "Roboto", sans-serif;
-  font-size: 12px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: normal;
+  color: ${Colors.text.comment};
+  ${Font.Text.P}
   text-align: center;
 
   @media ${Device.Laptop} {
@@ -168,25 +151,17 @@ const ContentWrapper = styled.div`
   }
 `;
 
-const ModalTitle = styled.h1`
+const ModalTitle = styled.h3`
   color: ${Colors.black};
   text-align: center;
-  font-family: "Roboto", sans-serif;
-  font-size: 28px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: normal;
+  ${Font.Text.H3}
   margin-bottom: 32px;
 `;
 
-const ModalDescription = styled.p`
+const ModalDescription = styled.h5`
   color: ${Colors.secondary};
   text-align: center;
-  font-family: "TT Norms Pro";
-  font-size: 16px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: normal;
+  ${Font.Text.H5}
 
   margin-bottom: 30px;
 `;
@@ -216,7 +191,7 @@ const Delivery = () => {
   const onSubmit = (data: FormData) => {
     console.log("CALL REQUEST:", data);
 
-    setIsSuccess(true); // 👉 показываем success
+    setIsSuccess(true);
     reset();
   };
 
@@ -226,7 +201,7 @@ const Delivery = () => {
   };
 
   return (
-    <Root>
+    <Root id="delivery">
       <Wrapper>
         <Title>Карта доставки</Title>
 

@@ -3,7 +3,10 @@ import styled from "styled-components";
 import { Device } from "@shared/styles/media";
 import type { ReactNode } from "react";
 
-const Root = styled.button<{ width?: string; type?: string }>`
+const Root = styled.button<{
+  width?: string;
+  type?: string;
+}>`
   padding: 9px 26px;
   background-color: ${Colors.primary};
   border: 1px solid transparent;
@@ -34,14 +37,15 @@ const Root = styled.button<{ width?: string; type?: string }>`
   }
 `;
 
-type ButtonProps = {
+type Props = {
   children: ReactNode;
   width?: string;
   onClick?: () => void;
   type?: string;
+  underline?: boolean;
 };
 
-const Button = ({ type, children, width, onClick }: ButtonProps) => {
+const Button = ({ type, children, width, onClick }: Props) => {
   return (
     <Root type={type} onClick={onClick} width={width}>
       {children}

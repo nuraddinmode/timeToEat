@@ -7,6 +7,7 @@ import { Colors } from "@shared/styles/Colors";
 import { Device } from "@shared/styles/media";
 import { activities } from "./consts";
 import { goals } from "./consts";
+import { Font } from "@shared/fonts";
 
 const Root = styled.div`
   @media ${Device.Tablet} {
@@ -20,7 +21,7 @@ const Root = styled.div`
 
 const Wrapper = styled.form`
   padding: 20px 10px 30px 10px;
-  background-color: ${Colors.lightOlive};
+  background-color: ${Colors.background.tertiary};
 
   margin-bottom: 40px;
   display: flex;
@@ -37,20 +38,15 @@ const Wrapper = styled.form`
   }
 `;
 
-const Title = styled.h2`
+const Title = styled.h3`
   color: ${Colors.black};
   text-align: center;
   margin: 0 auto;
-  font-family: "Roboto", sans-serif;
-  font-size: 24px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: normal;
+  ${Font.Text.H3}
   margin-bottom: 40px;
   width: 60%;
 
   @media ${Device.Laptop} {
-    font-size: 40px;
     margin-bottom: 50px;
   }
 `;
@@ -93,12 +89,8 @@ const Row = styled.div`
 `;
 
 const GenderLabel = styled.label`
-  color: ${Colors.mutedGray};
-  font-family: "Roboto", sans-serif;
-  font-size: 12px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: normal;
+  color: ${Colors.text.comment};
+  ${Font.Text.P}
   position: absolute;
   top: -40%;
   left: 40%;
@@ -108,23 +100,12 @@ const StyledInput = styled.input`
   width: 100%;
   padding: 13px 15px;
   border-radius: 60px;
-  background-color: ${Colors.background};
+  background-color: ${Colors.background.primary};
   text-align: center;
 
   &::placeholder {
     color: ${Colors.secondary};
-    font-family: "Roboto", sans-serif;
-    font-size: 13px;
-    font-style: normal;
-    font-weight: 500;
-    line-height: normal;
-
-    @media ${Device.Laptop} {
-      font-size: 16px;
-    }
-  }
-
-  @media ${Device.Laptop} {
+    ${Font.Text.H5}
   }
 `;
 
@@ -132,17 +113,10 @@ const StyledSelect = styled.select`
   padding: 13px 15px;
   border-radius: 60px;
 
-  background-color: ${Colors.background};
+  background-color: ${Colors.background.primary};
   color: ${Colors.secondary};
-  font-family: "Roboto", sans-serif;
-  font-size: 13px;
-  font-style: normal;
-  font-weight: 500;
+  ${Font.Text.H5}
   text-align: center;
-
-  @media ${Device.Laptop} {
-    font-size: 16px;
-  }
 `;
 
 const RowOfTwo = styled.div`
@@ -167,7 +141,7 @@ const RowColumn = styled.div`
 
 const Diet = () => {
   return (
-    <Root>
+    <Root id="diet">
       <Wrapper>
         <Title>Подберите рацион для своих целей</Title>
         <Content>

@@ -1,8 +1,8 @@
 export const cleanName = (value: string) => {
   return value
-    .replace(/[^A-Za-zА-Яа-яЁё\s-]/g, "") // только буквы, пробел, дефис
-    .replace(/\s+/g, " ") // убираем лишние пробелы
-    .trimStart(); // убираем пробел в начале
+    .replace(/[^A-Za-zА-Яа-яЁё\s-]/g, "")
+    .replace(/\s+/g, " ")
+    .trimStart();
 };
 export const normalizeName = (value: string) => {
   return value

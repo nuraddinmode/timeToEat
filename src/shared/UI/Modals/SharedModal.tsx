@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { Colors } from "@shared/styles/Colors";
 import { useEffect } from "react";
+import { Device } from "@shared/styles/media";
 
 const Root = styled.div`
   position: fixed;
@@ -17,10 +18,15 @@ const Modal = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  max-width: 450px;
-  padding: 40px 55px;
+  max-width: 350px;
+  padding: 30px 45px;
   border-radius: 30px;
   background: ${Colors.white};
+
+  @media ${Device.Laptop} {
+    max-width: 450px;
+    padding: 40px 55px;
+  }
 `;
 
 type Props = {

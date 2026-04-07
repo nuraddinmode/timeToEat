@@ -32,3 +32,7 @@ export const nameAndPhoneSchema = z.object({
     .regex(/^[A-Za-zА-Яа-яЁё\s-]+$/, "Только буквы"),
   phone: z.string().min(10, "Введите номер полностью"),
 });
+
+export const emailSchema = z.object({
+  email: z.string().min(1, "Введите email").email("Некорректный email"),
+});

@@ -13,6 +13,7 @@ import { useForm, Controller } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { phoneSchema } from "@shared/schema";
 import { PatternFormat } from "react-number-format";
+import { Font } from "@shared/fonts";
 
 const Root = styled.div`
   padding-right: 20px;
@@ -47,22 +48,16 @@ const Content = styled.div`
 const Title = styled.h1`
   grid-column: span 4;
   color: ${Colors.black};
-  font-family: "Roboto", sans-serif;
-  font-weight: 700;
-  font-size: 28px;
-
+  ${Font.Text.H1}
   @media ${Device.Laptop} {
-    font-size: 60px;
     margin-bottom: 88px;
   }
 `;
 
-const Description = styled.p`
+const Description = styled.h6`
   grid-column: span 3;
   color: ${Colors.secondary};
-  font-family: "Roboto", sans-serif;
-  font-size: 14px;
-  font-weight: 500;
+  ${Font.Text.H6}
   margin-bottom: 50px;
 `;
 
@@ -87,7 +82,7 @@ const CircleBig = styled.div`
   width: 144px;
   height: 144px;
   border-radius: 50%;
-  background-color: ${Colors.paleOlive};
+  background-color: ${Colors.ui.large};
   top: 90px;
   left: -30px;
   z-index: 1;
@@ -104,7 +99,7 @@ const CircleSmall = styled.div`
   width: 62px;
   height: 62px;
   border-radius: 50%;
-  background-color: ${Colors.softTeal};
+  background-color: ${Colors.ui.small};
   top: 20px;
   right: 10px;
   z-index: 1;
@@ -126,21 +121,18 @@ const SecondBtn = styled.button`
   font-weight: 700;
 
   &:hover {
-    background-color: ${Colors.primary};
-    color: ${Colors.white};
-    border-radius: 40px;
+    text-decoration-line: underline;
   }
 `;
 
-const ModalTitle = styled.h1`
-  font-family: "Roboto", sans-serif;
+const ModalTitle = styled.h2`
+  ${Font.Text.H2}
   text-align: center;
-  font-size: 28px;
   margin-bottom: 32px;
 `;
 
-const ModalDescription = styled.p`
-  font-family: "Roboto", sans-serif;
+const ModalDescription = styled.h5`
+  ${Font.Text.H5}
   text-align: center;
   margin-bottom: 30px;
 `;
@@ -153,6 +145,13 @@ const Hero = () => {
   const isMobile = useIsMobile();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
+
+  const scrollToPremium = () => {
+    const el = document.getElementById("premium");
+    if (el) {
+      el.scrollIntoView({ behavior: "smooth" });
+    }
+  };
 
   const {
     control,
@@ -194,7 +193,7 @@ const Hero = () => {
           )}
 
           <Buttons>
-            <Button>Подобрать питание</Button>
+            <Button onClick={scrollToPremium}>Подобрать питание</Button>
 
             <SecondBtn onClick={() => setIsModalOpen(true)}>
               Получить консультацию
