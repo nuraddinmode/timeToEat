@@ -85,7 +85,7 @@ const FirstRow = styled.div`
   }
 `;
 
-const Number = styled.h3`
+const Number = styled.a`
   ${Font.Text.H3};
   color: ${Colors.secondary};
 `;
@@ -130,7 +130,7 @@ const Footer = () => {
     <Root>
       <FirstRow>
         <TimeContainer>
-          <Number>+7 988 500 17-00</Number>
+          <Number href="tel:+79885001700">+7 988 500 17-00</Number>
           <WorkTime>Ежедневно c 09:00 до 21:00</WorkTime>
         </TimeContainer>
         <Email href="mailto:hello@pora-poest.com">hello@pora-poest.com</Email>
