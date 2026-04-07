@@ -87,7 +87,7 @@ const Contacts = () => {
   return (
     <Root>
       <Anchor onClick={() => setIsModalOpen(true)}>Перезвоните мне</Anchor>
-      <Number href="tel:+7 988 500-17-00">+7 988 500-17-00</Number>
+      <Number href="tel:+79885001700">+7 988 500-17-00</Number>
       <Time>c 09:00 до 21:00</Time>
       <SharedModal isOpen={isModalOpen} onClose={handleClose}>
         {isSuccess ? (

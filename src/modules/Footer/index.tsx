@@ -95,7 +95,7 @@ const WorkTime = styled.p`
   color: ${Colors.text.comment};
 `;
 
-const Email = styled.h3`
+const Email = styled.a`
   ${Font.Text.H3};
   color: ${Colors.secondary};
 `;
@@ -133,7 +133,7 @@ const Footer = () => {
           <Number>+7 988 500 17-00</Number>
           <WorkTime>Ежедневно c 09:00 до 21:00</WorkTime>
         </TimeContainer>
-        <Email>hello@pora-poest.com</Email>
+        <Email href="mailto:hello@pora-poest.com">hello@pora-poest.com</Email>
         <LogoContainer>
           <Logo />
           <Logo />
