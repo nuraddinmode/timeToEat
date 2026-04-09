@@ -1,6 +1,6 @@
+import { Font } from "@shared/fonts";
 import type { RadioBtnProps } from "../types";
 import { Colors } from "@shared/styles/Colors";
-import { Device } from "@shared/styles/media";
 import styled from "styled-components";
 
 const Root = styled.div<{ $isActive?: boolean }>`
@@ -11,44 +11,28 @@ const Root = styled.div<{ $isActive?: boolean }>`
   width: 240px;
   height: 96px;
   border-radius: 30px;
-  border: 1px solid ${Colors.lightSand};
+  border: 1px solid ${Colors.background.buttons};
   gap: 5px;
   background-color: ${({ $isActive }) =>
-    $isActive ? Colors.lightSand : "transparent"};
+    $isActive ? Colors.background.buttons : "transparent"};
   cursor: pointer;
   transition: 0.2s ease;
 
   &:hover {
-    background-color: ${Colors.lightSand};
+    background-color: ${Colors.background.buttons};
   }
 `;
 
 const Heading = styled.h3`
   color: ${Colors.secondary};
-  font-family: "Roboto", sans-serif;
-  font-size: 16px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: normal;
+  ${Font.Text.H3}
   text-align: center;
-
-  @media ${Device.Laptop} {
-    font-size: 24px;
-  }
 `;
 
-const Description = styled.p`
+const Description = styled.h5`
+  ${Font.Text.H5}
   color: ${Colors.secondary};
-  font-family: "Roboto", sans-serif;
   text-align: center;
-  font-size: 14px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: normal;
-
-  @media ${Device.Laptop} {
-    font-size: 16px;
-  }
 `;
 
 const RadioBtn = ({

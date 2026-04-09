@@ -2,6 +2,9 @@ import styled from "styled-components";
 import { Device } from "@shared/styles/media";
 import { Colors } from "@shared/styles/Colors";
 import type { MealTime } from "../types";
+import { useMealPlanStore } from "../store";
+import { dishes } from "../consts";
+import { Font } from "@shared/fonts";
 
 const Root = styled.div`
   display: flex;
@@ -36,22 +39,14 @@ const MealTime = styled.div`
 `;
 
 const MealTimeContent = styled.p`
-  color: ${Colors.warmBeige};
-  font-family: "Roboto", sans-serif;
-  font-size: 12px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: normal;
+  color: ${Colors.text.comment};
+  ${Font.Text.P}
 `;
 
-const MealDescription = styled.p`
+const MealDescription = styled.h5`
   max-width: 270px;
   color: ${Colors.secondary};
-  font-family: "Roboto", sans-serif;
-  font-size: 16px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: normal;
+  ${Font.Text.H5}
   text-align: center;
 
   @media ${Device.Laptop} {
@@ -59,7 +54,9 @@ const MealDescription = styled.p`
   }
 `;
 
-const Meals = ({ currentDishes }) => {
+const Meals = () => {
+  const selectedDay = useMealPlanStore((s) => s.selectedDay);
+  const currentDishes = dishes[selectedDay];
   return (
     <Root>
       {currentDishes.map(

@@ -4,10 +4,11 @@ import Arrow from "@assets/icons/arrowRight.svg?component";
 import styled from "styled-components";
 import { Device } from "@shared/styles/media";
 import { Colors } from "@shared/styles/Colors";
+import { Font } from "@shared/fonts";
 
 const Root = styled.div`
   min-height: 40px;
-  background-color: ${Colors.warmBeige};
+  background-color: ${Colors.extra.primary};
   display: flex;
   align-items: center;
   justify-content: space-around;
@@ -35,19 +36,8 @@ const Content = styled.div`
 `;
 
 const Description = styled.p`
+  ${Font.Text.H5};
   color: ${Colors.white};
-  font-family: "Roboto", sans-serif;
-  font-size: 14px;
-  font-style: normal;
-  font-weight: 700;
-  line-height: normal;
-
-  @media ${Device.Tablet} {
-    font-size: 15px;
-  }
-  @media ${Device.Laptop} {
-    font-size: 24px;
-  }
 `;
 
 const Button = styled.button`
@@ -57,18 +47,14 @@ const Button = styled.button`
     display: flex;
     gap: 7px;
     align-items: center;
+    cursor: pointer;
+    color: ${Colors.white};
 
+    ${Font.Text.H5};
+    text-decoration-line: underline;
     background: none;
     border: none;
     padding: 0;
-    cursor: pointer;
-    color: ${Colors.white};
-    font-variant-ligatures: none;
-    font-family: "Roboto", sans-serif;
-    font-size: 15px;
-    font-style: normal;
-    font-weight: 700;
-    line-height: normal;
   }
 
   @media ${Device.Laptop} {
@@ -78,6 +64,13 @@ const Button = styled.button`
 `;
 
 const Advertisement = () => {
+  const scrollToPremium = () => {
+    const el = document.getElementById("premium");
+    if (el) {
+      el.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   const isMobile = useIsMobile();
 
   const visibleItem = content.find((item) =>
@@ -92,7 +85,7 @@ const Advertisement = () => {
         {<visibleItem.img />}
         <Description>{visibleItem.text}</Description>
       </Content>
-      <Button>
+      <Button onClick={scrollToPremium}>
         Заказать
         <Arrow />
       </Button>

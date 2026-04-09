@@ -40,6 +40,8 @@ type caloriesItem = {
   description?: string;
   mealsCount?: number;
   daysInWeek?: number;
+  isCustom?: boolean;
+  isTrial?: boolean;
 };
 
 type caloriesType = caloriesItem[];

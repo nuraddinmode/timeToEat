@@ -10,7 +10,7 @@ const Root = styled.ul`
   width: 220px;
   padding: 16px 0;
 
-  background: ${Colors.paleOlive};
+  background: ${Colors.background.tertiary};
   border-radius: 12px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
 
@@ -40,16 +40,25 @@ const Root = styled.ul`
     transition: background 0.2s ease;
 
     &:hover {
-      background: ${Colors.warmBeige};
+      background: ${Colors.extra.primary};
     }
   }
 `;
 
 const Burger = () => {
+  const scrollToSection = (id: string) => {
+    const el = document.getElementById(id);
+    if (el) {
+      el.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   return (
     <Root>
       {items.map((item) => (
-        <li key={item.id}>{item.label}</li>
+        <li key={item.id} onClick={() => scrollToSection(item.target)}>
+          {item.label}
+        </li>
       ))}
     </Root>
   );

@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { SmallRadio } from "@shared/components/SmallRadio";
 import { daysOfWeek } from "../consts";
+import { useMealPlanStore } from "../store";
 
 const Root = styled.div`
   display: flex;
@@ -12,7 +13,10 @@ const Root = styled.div`
   }
 `;
 
-const DaysOfWeek = ({ selectedDay, setSelectedDay }: any) => {
+const DaysOfWeek = () => {
+  const selectedDay = useMealPlanStore((s) => s.selectedDay);
+  const setSelectedDay = useMealPlanStore((s) => s.setSelectedDay);
+
   return (
     <Root>
       {daysOfWeek.map(({ id, day, key }) => (

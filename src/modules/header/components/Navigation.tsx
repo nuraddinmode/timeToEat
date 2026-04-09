@@ -1,6 +1,7 @@
 import { Colors } from "@shared/styles/Colors";
 import { items } from "../consts";
 import styled from "styled-components";
+import { Font } from "@shared/fonts";
 
 const Root = styled.ul`
   display: flex;
@@ -10,19 +11,15 @@ const Root = styled.ul`
 
 const Item = styled.li`
   color: ${Colors.secondary};
-  font-family: "Roboto", sans-serif;
-  font-size: 18px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: normal;
+  ${Font.Text.H5}
 `;
 
 const Navigation = () => {
   return (
     <Root>
-      {items.map(({ id, label }) => (
+      {items.map(({ id, label, target }) => (
         <Item key={id}>
-          <a href="">{label}</a>
+          <a href={`#${target}`}>{label}</a>
         </Item>
       ))}
     </Root>

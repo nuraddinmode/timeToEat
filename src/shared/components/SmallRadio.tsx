@@ -1,12 +1,11 @@
 import { Colors } from "@shared/styles/Colors";
 import styled from "styled-components";
-import type { SmallRadioProps } from "@shared/types";
 import { Device } from "@shared/styles/media";
 
 const Root = styled.div<{ $isActive?: boolean }>`
   padding: 8px 23px;
   border-radius: 40px;
-  border: 1px solid ${Colors.lightSand};
+  border: 1px solid ${Colors.background.buttons};
   cursor: pointer;
   white-space: nowrap;
 
@@ -17,11 +16,11 @@ const Root = styled.div<{ $isActive?: boolean }>`
   font-weight: 500;
   line-height: normal;
   background-color: ${({ $isActive }) =>
-    $isActive ? Colors.lightSand : "transparent"};
+    $isActive ? Colors.background.buttons : "transparent"};
   user-select: none;
 
   &:hover {
-    background-color: ${Colors.lightSand};
+    background-color: ${Colors.background.buttons};
   }
 
   @media ${Device.Laptop} {
@@ -29,7 +28,13 @@ const Root = styled.div<{ $isActive?: boolean }>`
   }
 `;
 
-const SmallRadio = ({ isActive, text, onClick }: SmallRadioProps) => {
+type Props = {
+  isActive: boolean;
+  text: string;
+  onClick?: () => void;
+};
+
+const SmallRadio = ({ isActive, text, onClick }: Props) => {
   return (
     <Root $isActive={isActive} onClick={onClick}>
       {text}

@@ -3,6 +3,7 @@ import { Colors } from "@shared/styles/Colors";
 import styled from "styled-components";
 import { Device } from "@shared/styles/media";
 import { salad } from "@assets/index";
+import { Font } from "@shared/fonts";
 
 const Root = styled.div`
   padding-right: 20px;
@@ -43,22 +44,9 @@ const Wrapper = styled.div`
   max-width: 650px;
 `;
 
-const Heading = styled.h2`
+const Heading = styled.h3`
   color: ${Colors.primary};
-  font-family: "Roboto", sans-serif;
-  font-size: 20px;
-  font-style: normal;
-  font-weight: 700;
-  line-height: normal;
-
-  @media ${Device.Laptop} {
-    color: ${Colors.primary};
-    font-family: "Roboto", sans-serif;
-    font-size: 24px;
-    font-style: normal;
-    font-weight: 700;
-    line-height: normal;
-  }
+  ${Font.Text.H3}
 `;
 
 const Descriptions = styled.div`
@@ -67,17 +55,9 @@ const Descriptions = styled.div`
   gap: 20px;
 `;
 
-const Description = styled.p`
+const Description = styled.h5`
   color: ${Colors.secondary};
-  font-family: "Roboto", sans-serif;
-  font-size: 14px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: normal;
-
-  @media ${Device.Laptop} {
-    font-size: 16px;
-  }
+  ${Font.Text.H5}
 `;
 
 const Img = styled.img`
